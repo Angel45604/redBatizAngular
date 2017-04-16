@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {nmSidenav} from './sidenav/sidenav.component';
+import { nmMenubar } from './menubar/menubar.component';
+import { nmPublicationCard } from './publication-card/publication-card.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  // title = 'Hola mundo';
 }
