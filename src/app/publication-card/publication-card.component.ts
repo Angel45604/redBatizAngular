@@ -5,5 +5,5 @@
     styleUrls: ['publication-card.component.css']
 })
 export class nmPublicationCard{
-    publicador: String='Maestra Felisa';
+    publicator: String='Maestra Felisa';
 }
