@@ -31,6 +31,22 @@ app.get("/",function(req,res){
     });
 });
 
+connection.query("INSERT INTO tabletest1(nombre,appe) VALUES ('Hola2','Pablo2');",function(err,rows,fields){
+    if(!err){
+        console.log('The solution is: ' + rows);
+    }else{
+        console.log('Error while performing Query.');
+    }
+});
+
+connection.query('SELECT * from tabletest1',function(err,rows,fields){
+    if(!err){
+        console.log('The solution is: ' + rows[0].id);
+    }else{
+        console.log('Error while performing Query.');
+    }
+});
+
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.options("*",cors());
