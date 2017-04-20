@@ -1,4 +1,6 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require("cors");
 var app = express();
 
 var mysql = require('mysql');
@@ -28,4 +30,14 @@ app.get("/",function(req,res){
         }
     });
 });
-app.listen(4200);
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.options("*",cors());
+
+var routes = express.Router();
+
+var port = process.env.PORT || 3000;
+app.listen(port,function(){
+    console.log("Listening port",port);
+});

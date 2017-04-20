@@ -30,10 +30,7 @@
     "materialize-css": "^0.98.0",
     "mysql": "^2.13.0",
     "rxjs": "^5.1.0",
-<<<<<<< HEAD
     "sequelize": "^3.30.4",
-=======
->>>>>>> 2417f3f9c37040842c2bc5c9c21b2cc24fc2e1f2
     "typescript": "^2.2.2",
     "zone.js": "^0.7.6"
   },
