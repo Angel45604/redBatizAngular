@@ -4,12 +4,12 @@
         <img md-card-sm-image src="assets/images/avatar.jpg" alt="Avatar" class="circle responsive-img valign profile-image">
     </div>
     <md-card-title>{{publicator}}</md-card-title>
-    <md-card-subtitle><b>Fecha Entrega: </b>21/03/2017</md-card-subtitle>
+    <md-card-subtitle><b>Fecha Entrega: </b>{{publicationDate}}</md-card-subtitle>
   </md-card-header>
-  <img md-card-image src="assets/images/isom.png">
+  <img md-card-image src={{publicationImg}}>
   <md-card-content>
     <p>
-      Prueba
+      {{publicationText}}
     </p>
   </md-card-content>
   <md-card-actions>

@@ -1,12 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { nmSidenav } from './sidenav/sidenav.component';
-import { nmMenubar} from './menubar/menubar.component';
-import { nmPublicationCard } from './publication-card/publication-card.component';
+import { Sidenav } from './sidenav/sidenav.component';
+import { Menubar} from './menubar/menubar.component';
+import { PublicationCard } from './publication-card/publication-card.component';
+import { PublicationContainer } from './publication-container/publication-container.component';
 //material
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -14,9 +15,10 @@ import 'hammerjs';
 @NgModule({
   declarations: [
     AppComponent,
-    nmSidenav,
-    nmMenubar,
-    nmPublicationCard
+    Sidenav,
+    Menubar,
+    PublicationCard,
+    PublicationContainer
   ],
   imports: [
     BrowserModule,
