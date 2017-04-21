@@ -1,11 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
     "\\src\\app",
     "\\src\\app\\menubar",
-    "\\src\\app\\publication-card"
+    "\\src\\app\\publication-card",
+    "\\src\\app\\publication-container",
+    "\\src\\app\\sidenav",
+    "\\src\\backend"
   ],
-  "SelectedNode": "\\src\\app\\app.component.html",
+  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }

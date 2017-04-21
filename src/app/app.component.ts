@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {nmSidenav} from './sidenav/sidenav.component';
-import { nmMenubar } from './menubar/menubar.component';
-import { nmPublicationCard } from './publication-card/publication-card.component';
+import {Sidenav} from './sidenav/sidenav.component';
+import { Menubar } from './menubar/menubar.component';
+import { PublicationCard } from './publication-card/publication-card.component';
 
 @Component({
   selector: 'app-root',

@@ -1,4 +1,6 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require("cors");
 var app = express();
 
 var mysql = require('mysql');
@@ -28,4 +30,30 @@ app.get("/",function(req,res){
         }
     });
 });
-app.listen(4200);
+
+connection.query("INSERT INTO tabletest1(nombre,appe) VALUES ('Hola2','Pablo2');",function(err,rows,fields){
+    if(!err){
+        console.log('The solution is: ' + rows);
+    }else{
+        console.log('Error while performing Query.');
+    }
+});
+
+connection.query('SELECT * from tabletest1',function(err,rows,fields){
+    if(!err){
+        console.log('The solution is: ' + rows[0].appe);
+    }else{
+        console.log('Error while performing Query.');
+    }
+});
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.options("*",cors());
+
+var routes = express.Router();
+
+var port = process.env.PORT || 3000;
+app.listen(port,function(){
+    console.log("Listening port",port);
+});
