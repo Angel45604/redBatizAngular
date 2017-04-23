@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {EmitterService} from './services/emmiter.service';
+
 import { AppComponent } from './app.component';
 import { Sidenav } from './sidenav/sidenav.component';
 import { Menubar} from './menubar/menubar.component';
@@ -26,7 +28,9 @@ import 'hammerjs';
     HttpModule,
     MaterialModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    EmitterService
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
