@@ -1,4 +1,4 @@
-﻿import { Component,Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import { Component,Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import {CommentService} from '../services/publishCard.service';
@@ -18,7 +18,5 @@ export class PublicationCard{
     @Input() comment: Comment;
     @Input() publicator:string;
     @Input() publicationDate:string;
-    @Input() publicationText:string
-
-    
+    @Input() publicationText:string;
 }

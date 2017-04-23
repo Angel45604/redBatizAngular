@@ -12,7 +12,7 @@ var Students=require('./routes/Students');
 var app = express();
 
 app.set('views', path.join(__dirname, 'view'));
-app.set('view engine', 'html');
+app.set('view engine', 'jade');
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -52,6 +52,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

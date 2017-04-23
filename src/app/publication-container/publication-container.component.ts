@@ -1,15 +1,15 @@
-﻿import { Component,Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import { Component,Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import {CommentService} from '../services/publishCard.service';
 import { EmitterService } from '../services/emmiter.service';
-
 
 @Component({
     selector: 'publication-container-component',
     templateUrl: 'publication-container.component.html',
     styleUrls: ['publication-container.component.css']
 })
+
 export class PublicationContainer implements OnInit, OnChanges{
     constructor(
         private commentService:CommentService

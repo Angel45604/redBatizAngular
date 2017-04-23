@@ -1,4 +1,4 @@
-﻿import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import {EmitterService} from './services/emmiter.service';
 
 import { AppComponent } from './app.component';
+import {CommentService} from './services/publishCard.service';
 import { Sidenav } from './sidenav/sidenav.component';
 import { Menubar} from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
@@ -29,7 +30,7 @@ import 'hammerjs';
     MaterialModule.forRoot()
   ],
   providers: [
-    EmitterService
+    EmitterService, CommentService
   ],
   bootstrap: [AppComponent],
 })
