@@ -9,5 +9,11 @@ import { PublicationCard } from './publication-card/publication-card.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'Hola mundo';
+  assignatureIndex:number=0;
+  defaultFrontPage:boolean=true;
+  setAssignature(index:any){
+    console.log(index);
+    this.assignatureIndex=index;
+    this.defaultFrontPage=false;
+  }
 }

@@ -8,6 +8,7 @@ import { Sidenav } from './sidenav/sidenav.component';
 import { Menubar} from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
 import { PublicationContainer } from './publication-container/publication-container.component';
+import { Assignature } from './assignature/assignature.component';
 //material
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -18,7 +19,8 @@ import 'hammerjs';
     Sidenav,
     Menubar,
     PublicationCard,
-    PublicationContainer
+    PublicationContainer,
+    Assignature
   ],
   imports: [
     BrowserModule,

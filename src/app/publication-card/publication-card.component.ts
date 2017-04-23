@@ -1,5 +1,4 @@
 ﻿import { Component,Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'publication-card-component',
     templateUrl: 'publication-card.component.html',
