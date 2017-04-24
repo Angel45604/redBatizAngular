@@ -4,15 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import {EmitterService} from './services/emmiter.service';
+import {CommentService} from './services/publishCard.service';
 
 import { AppComponent } from './app.component';
-import {CommentService} from './services/publishCard.service';
 import { Sidenav } from './sidenav/sidenav.component';
 import { Menubar} from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
 import { PublicationContainer } from './publication-container/publication-container.component';
+import { Publicator} from './publicator/publicator.component';
 //material
 import { MaterialModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 @NgModule({
@@ -21,12 +23,14 @@ import 'hammerjs';
     Sidenav,
     Menubar,
     PublicationCard,
-    PublicationContainer
+    PublicationContainer,
+    Publicator
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     MaterialModule.forRoot()
   ],
   providers: [
