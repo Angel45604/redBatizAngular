@@ -11,10 +11,10 @@ import { Publicator } from './publicator/publicator.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  divContentIndex:number=0;
+  divContentIndex:number=-1;
   isToolOnPage:boolean=false;
   setAssignature(index:number){
     this.divContentIndex=index;
-    this.isToolOnPage=false;
+    this.isToolOnPage=true;
   }
 }
