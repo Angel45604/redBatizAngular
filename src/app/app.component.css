@@ -1,17 +1,7 @@
-<<<<<<< HEAD
 menubar-component{
     z-index:3;
 }
 div{
     padding-top: 100px;
     z-index: 2;
-=======
-menubar-component{
-    z-index:3;
-}
-
-.row{
-    padding-top: 100px;
-    z-index: 2;
->>>>>>> ed4b51c77263397732ee910093916d0830f1d4f5
 }

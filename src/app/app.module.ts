@@ -1,39 +1,3 @@
-<<<<<<< HEAD
-﻿import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { AppComponent } from './app.component';
-import { Sidenav } from './sidenav/sidenav.component';
-import { Menubar} from './menubar/menubar.component';
-import { PublicationCard } from './publication-card/publication-card.component';
-import { PublicationContainer } from './publication-container/publication-container.component';
-import { Assignature } from './assignature/assignature.component';
-//material
-import { MaterialModule } from '@angular/material';
-import 'hammerjs';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    Sidenav,
-    Menubar,
-    PublicationCard,
-    PublicationContainer,
-    Assignature
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    MaterialModule.forRoot()
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-=======
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -47,6 +11,7 @@ import { Sidenav } from './sidenav/sidenav.component';
 import { Menubar} from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
 import { PublicationContainer } from './publication-container/publication-container.component';
+import { Assignature } from './assignature/assignature.component';
 import { Publicator} from './publicator/publicator.component';
 //material
 import { MaterialModule } from '@angular/material';
@@ -60,6 +25,7 @@ import 'hammerjs';
     Menubar,
     PublicationCard,
     PublicationContainer,
+    Assignature,
     Publicator
   ],
   imports: [
@@ -75,4 +41,3 @@ import 'hammerjs';
   bootstrap: [AppComponent],
 })
 export class AppModule { }
->>>>>>> ed4b51c77263397732ee910093916d0830f1d4f5
