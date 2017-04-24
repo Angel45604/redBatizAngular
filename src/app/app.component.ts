@@ -11,8 +11,9 @@ import { Publicator } from './publicator/publicator.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  toolURLS:String[]=['hola.html'];
   divContentIndex:number=0;
-  isToolOnPage:boolean=true;
+  isToolOnPage:boolean=false;
   setAssignature(index:number){
     this.divContentIndex=index;
     this.isToolOnPage=true;

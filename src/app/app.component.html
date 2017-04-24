@@ -1,12 +1,11 @@
 <menubar-component></menubar-component>
 <sidenav-component (assiEvent)="setAssignature($event)"></sidenav-component>
 <div class="row">
-    <iframe src={{toolURLS[divContentIndex]}} *ngIf="isToolOnPage; else publiCont"></iframe>
+    <iframe src='' *ngIf="isToolOnPage; else publiCont"></iframe>
     <ng-template #publiCont>
         <publication-container-component class="col offset-s4"  *ngIf="divContentIndex==-1; else assi"></publication-container-component>
-        <h1>Hola</h1>
-    </ng-template>
-    <ng-template #assi>
-        <assignature-component class="col offset-s4"></assignature-component>
+         <ng-template #assi>
+            <assignature-component class="col offset-s4"></assignature-component>
+        </ng-template>
     </ng-template>
 </div>
