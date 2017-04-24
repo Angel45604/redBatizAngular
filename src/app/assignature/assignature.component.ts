@@ -1,9 +1,10 @@
 import {Component, Input} from "@angular/core";
 @Component({
-    selector:'assignature',
-    template:'assignature.component.html',
+    selector:'assignature-component',
+    templateUrl:'assignature.component.html',
     styleUrls:['assignature.component.css']
 })
 export class Assignature{
-    @Input() homeworks:any[]=[{title:'Tarea1',description:'Prueba de tarea'}];
+    hola:String='Hola';
+    homeworks:any[]=[{title:'Tarea Uno',description:'Descripcion de tarea uno'},{title:'Tarea Dos',description:'Descripcion de tarea dos'}];
 }

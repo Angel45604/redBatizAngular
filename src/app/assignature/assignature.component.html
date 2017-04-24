@@ -1,9 +1,9 @@
-<h1>Herramientas</h1>
+<h3>Herramientas</h3>
 <div>
 
 </div>
-<h1>Tareas</h1>
-<div *ngFor="let homework from homeworks">
-    {{homework.title}}
-    {{homework.description}}
+<h3>Tareas</h3>
+<div *ngFor="let homework of homeworks">
+    <h4>{{homework.title}}</h4>
+    <h4>{{homework.description}}</h4>
 </div>

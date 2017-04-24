@@ -1,8 +1,7 @@
 menubar-component{
     z-index:3;
 }
-
-.row{
+div{
     padding-top: 100px;
     z-index: 2;
 }
