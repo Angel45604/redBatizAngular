@@ -1,120 +1,56 @@
-<<<<<<< HEAD
 var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors = require("cors");
+var cors=require('cors');
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var Tasks=require('./routes/Tasks');
+var Students=require('./routes/Students');
 var app = express();
 
-var mysql = require('mysql');
+app.set('views', path.join(__dirname, 'view'));
+app.set('view engine', 'jade');
+app.use(cors());
+app.use(logger('dev'));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
 
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'n0m3l0',
-    database: 'test1'
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static('/uploads/'));
+
+app.use('/', routes);
+app.use('/users', users);
+app.use('/Tasks',Tasks);
+app.use('/Students',Students);
+// catch 404
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-connection.connect(function (err){
-    if(!err){
-        console.log("Database connected");
-    }else{
-        console.log("error connecting database");
-    }
-});
+// error handlers
 
-app.get("/",function(req,res){
-    connection.query('SELECT * from tabletest1',function(err,rows,fields){
-        connection.end();
-        if(!err){
-            console.log("The solution is: ",rows);
-        }else{
-            console.log("Error while performing Query.");
-        }
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
+}
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
-connection.query("INSERT INTO tabletest1(nombre,appe) VALUES ('Hola2','Pablo2');",function(err,rows,fields){
-    if(!err){
-        console.log('The solution is: ' + rows);
-    }else{
-        console.log('Error while performing Query.');
-    }
-});
-
-connection.query('SELECT * from tabletest1',function(err,rows,fields){
-    if(!err){
-        console.log('The solution is: ' + rows[0].appe);
-    }else{
-        console.log('Error while performing Query.');
-    }
-});
-
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
-app.options("*",cors());
-
-var routes = express.Router();
-
-var port = process.env.PORT || 3000;
-app.listen(port,function(){
-    console.log("Listening port",port);
-=======
-var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require("cors");
-var app = express();
-
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'n0m3l0',
-    database: 'test1'
-});
-
-connection.connect(function (err){
-    if(!err){
-        console.log("Database connected");
-    }else{
-        console.log("error connecting database");
-    }
-});
-
-app.get("/",function(req,res){
-    connection.query('SELECT * from tabletest1',function(err,rows,fields){
-        connection.end();
-        if(!err){
-            console.log("The solution is: ",rows);
-        }else{
-            console.log("Error while performing Query.");
-        }
-    });
-});
-
-connection.query("INSERT INTO tabletest1(nombre,appe) VALUES ('Hola2','Pablo2');",function(err,rows,fields){
-    if(!err){
-        console.log('The solution is: ' + rows);
-    }else{
-        console.log('Error while performing Query.');
-    }
-});
-
-connection.query('SELECT * from tabletest1',function(err,rows,fields){
-    if(!err){
-        console.log('The solution is: ' + rows[0].id);
-    }else{
-        console.log('Error while performing Query.');
-    }
-});
-
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
-app.options("*",cors());
-
-var routes = express.Router();
-
-var port = process.env.PORT || 3000;
-app.listen(port,function(){
-    console.log("Listening port",port);
->>>>>>> 56b1245ba3f38b031bfa202b51717c722f43fb78
-});
+module.exports = app;

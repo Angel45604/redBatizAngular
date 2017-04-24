@@ -1,0 +1,15 @@
+<md-card class="card">
+  <form action="">
+    <md-input-container class="example-full-width">
+      <textarea mdInput placeholder="PUBLICATOINATOR"></textarea>
+    </md-input-container>
+    <br />
+    <br />
+    <md-select multiple placeholder="Grupos" class="groups">
+        <md-option *ngFor="let group of groups" [value]="group.value">
+            {{ group.viewValue }}
+        </md-option>
+    </md-select>
+    <input type="file" (change)="fileEvent($event)" />
+  </form>
+</md-card>

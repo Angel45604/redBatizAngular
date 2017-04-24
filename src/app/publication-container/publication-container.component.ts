@@ -1,28 +1,40 @@
-<<<<<<< HEAD
-﻿import { Component } from '@angular/core';
+import { Component,Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import {CommentService} from '../services/publishCard.service';
+import { EmitterService } from '../services/emmiter.service';
+
 @Component({
     selector: 'publication-container-component',
     templateUrl: 'publication-container.component.html',
     styleUrls: ['publication-container.component.css']
 })
-export class PublicationContainer{
-    registers: any[] = [
-        { publicator: 'Pablo', date: '08/12/2010', text: 'Hola' }, 
-        { publicator: 'Felisa', date: '018/02/2000', text: 'Como' }, 
-        { publicator: 'Margarito', date: '28/04/2017', text: 'Estas?' }
-        ];
-=======
-﻿import { Component } from '@angular/core';
-@Component({
-    selector: 'publication-container-component',
-    templateUrl: 'publication-container.component.html',
-    styleUrls: ['publication-container.component.css']
-})
-export class PublicationContainer{
-    registers: any[] = [
-        { publicator: 'Pablo', date: '08/12/2010', text: 'Hola' }, 
-        { publicator: 'Felisa', date: '018/02/2000', text: 'Como' }, 
-        { publicator: 'Margarito', date: '28/04/2017', text: 'Estas?' }
-        ];
->>>>>>> 56b1245ba3f38b031bfa202b51717c722f43fb78
+
+export class PublicationContainer implements OnInit, OnChanges{
+    constructor(
+        private commentService:CommentService
+    ){}
+
+    comments:Comment[];
+
+    @Input() publicator: string;
+    @Input() publicationDate: string;
+    @Input() publicationText: string;
+
+    loadComments(){
+        this.commentService.getComments()
+        .subscribe(
+            comments => this.comments = comments,
+            err =>{
+                console.log(err);
+            });
+    }
+
+    ngOnInit(){
+    this.loadComments();
+    }
+
+    ngOnChanges(changes:any){
+        EmitterService.get(this.publicator).subscribe((comments:Comment[]) => {this.comments = comments});
+    }
 }
