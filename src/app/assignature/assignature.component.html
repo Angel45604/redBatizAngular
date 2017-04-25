@@ -4,6 +4,8 @@
 </div>
 <h3>Tareas</h3>
 <div *ngFor="let homework of homeworks">
-    <h4>{{homework.title}}</h4>
-    <h4>{{homework.description}}</h4>
+    <div class="card small">
+        <h4>{{homework.title}}</h4>
+        <h4>{{homework.description}}</h4>
+    </div>
 </div>
