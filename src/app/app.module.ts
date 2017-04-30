@@ -11,7 +11,6 @@ import { Sidenav } from './sidenav/sidenav.component';
 import { Menubar} from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
 import { PublicationContainer } from './publication-container/publication-container.component';
-import { Assignature } from './assignature/assignature.component';
 import { Publicator} from './publicator/publicator.component';
 //material
 import { MaterialModule } from '@angular/material';
@@ -25,7 +24,6 @@ import 'hammerjs';
     Menubar,
     PublicationCard,
     PublicationContainer,
-    Assignature,
     Publicator
   ],
   imports: [

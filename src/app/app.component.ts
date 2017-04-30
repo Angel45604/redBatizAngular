@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {Sidenav} from './sidenav/sidenav.component';
 import { Menubar } from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
-import { Assignature} from './assignature/assignature.component';
 import { Publicator } from './publicator/publicator.component';
 
 @Component({
@@ -11,10 +10,4 @@ import { Publicator } from './publicator/publicator.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  divContentIndex:number=-1;
-  isToolOnPage:boolean=false;
-  setAssignature(index:number){
-    this.divContentIndex=index;
-    this.isToolOnPage=true;
-  }
 }
