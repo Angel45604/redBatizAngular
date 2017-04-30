@@ -13,6 +13,7 @@ import { PublicationCard } from './publication-card/publication-card.component';
 import { PublicationContainer } from './publication-container/publication-container.component';
 import { Assignature } from './assignature/assignature.component';
 import { Publicator} from './publicator/publicator.component';
+import { Tool } from './tool/tool.component';
 //material
 import { MaterialModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,7 +27,8 @@ import 'hammerjs';
     PublicationCard,
     PublicationContainer,
     Assignature,
-    Publicator
+    Publicator,
+    Tool
   ],
   imports: [
     BrowserModule,
