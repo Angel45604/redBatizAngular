@@ -11,7 +11,7 @@ var Tasks=require('./routes/Tasks');
 var Students=require('./routes/Students');
 var app = express();
 
-app.set('views', path.join(__dirname, 'view'));
+app.set('view', path.join(__dirname, 'view'));
 app.set('view engine', 'jade');
 app.use(cors());
 app.use(logger('dev'));

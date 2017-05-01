@@ -1,15 +1,19 @@
 <md-card class="card">
-  <form action="">
-    <md-input-container class="example-full-width">
-      <textarea mdInput placeholder="PUBLICATOINATOR"></textarea>
-    </md-input-container>
-    <br />
-    <br />
-    <md-select multiple placeholder="Grupos" class="groups">
-        <md-option *ngFor="let group of groups" [value]="group.value">
-            {{ group.viewValue }}
-        </md-option>
-    </md-select>
-    <input type="file" (change)="fileEvent($event)" />
+  <form (ngSubmit)="submitPublication()">
+    <div class="from-group">
+      <md-input-container class="example-full-width">
+        <textarea class="form-control" mdInput placeholder="PUBLICATOINATOR" [(ngModel)]="publication.publicationText" name="text"></textarea>
+      </md-input-container>
+      <br />
+      <br />
+      <!--<md-select multiple placeholder="Grupos" class="groups">
+          <md-option *ngFor="let group of groups" [value]="group.value">
+              {{ group.viewValue }}
+          </md-option>
+      </md-select>
+      <input type="file" (change)="fileEvent($event)" />-->
+      <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block">Publicar</button>
+      <button *ngIf="editing" type="submit" class="btn btn-warning btn-block">Editar</button>
+    </div>
   </form>
 </md-card>

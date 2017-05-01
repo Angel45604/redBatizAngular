@@ -1,6 +1,7 @@
 <menubar-component></menubar-component>
-<sidenav-component (assiEvent)="setAssignature($event)"></sidenav-component>
+<sidenav-component></sidenav-component>
 <div class="row">
+<<<<<<< HEAD
     <tool-component frameSrc={{test}} *ngIf="isToolOnPage; else publiCont"  class="col offset-s4"></tool-component>
     <ng-template #publiCont>
         <publication-container-component class="col offset-s4"  *ngIf="divContentIndex==-1; else assi">
@@ -10,4 +11,10 @@
             <assignature-component class="col offset-s4"></assignature-component>
         </ng-template>
     </ng-template>
+=======
+    <publicator-component class="col offset-s4"></publicator-component>
+</div>
+<div class="row">
+    <publication-container-component class="col offset-s4"></publication-container-component>
+>>>>>>> 07f27f2608511267011f9c248c8b9e247047a7de
 </div>
