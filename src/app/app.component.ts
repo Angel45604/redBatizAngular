@@ -6,7 +6,7 @@ import { Publicator } from './publicator/publicator.component';
 import { Tool } from './tool/tool.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-component',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
