@@ -1,10 +1,21 @@
-﻿<menubar-component></menubar-component>
-<sidenav-component accessLevel={{accessLevel}}></sidenav-component>
-<div class="row">
-  <h1 class="col offset-s4">{{Object.keys(groups)}}</h1>
-  <publicator-component class="col offset-s4" *ngIf="accessLevel>0"></publicator-component>
-  <publication-container-component class="col offset-s4"  *ngIf="contentMode==0; else assi"></publication-container-component>
-    <ng-template #assi>
-      <assignature-component class="col offset-s4"></assignature-component>
-    </ng-template>
+﻿<div *ngIf="!loggedIn;else app">
+  <form #f="ngForm" (ngSubmit)="logIn(f.value)">
+    <input type="text" placeholder="Boleta" name="boleta" ngModel />
+    <input type="text" placeholder="Contraseña" name="contrasena" ngModel />
+    <button type="submit">Iniciar Sesion</button>
+  </form>
 </div>
+<ng-template #app>
+    <menubar-component></menubar-component>
+    <sidenav-component accessLevel={{accessLevel}}></sidenav-component>
+    <div class="row">
+      <ul class="col offset-s4" *ngFor=" let group of groups">
+        <li>{{group.name}}</li>
+      </ul>
+      <publicator-component class="col offset-s4" *ngIf="accessLevel>0 && contentMode==0"></publicator-component>
+      <publication-container-component class="col offset-s4"  *ngIf="contentMode==0; else assi"></publication-container-component>
+        <ng-template #assi>
+          <assignature-component class="col offset-s4"></assignature-component>
+        </ng-template>
+    </div>
+</ng-template>

@@ -5,7 +5,7 @@
     styleUrls: ['sidenav.component.css']
 })
 export class Sidenav{
-    groups: any[] = [{ name: '1' }, { name: '1' }];
+    groups: any[] = [{ name: 'Nombre 1' }, { name: 'Nombre 2' }];
     @Output() assiEvent: EventEmitter<String> = new EventEmitter();
     @Input() accessLevel: number;
 }

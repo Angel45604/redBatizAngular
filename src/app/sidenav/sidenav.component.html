@@ -42,14 +42,13 @@
             </ul>
         </li>
         <ng-template #groups>
-          {{groups[0]}}
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
               <li class="bold">
                 <a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> Grupos</a>
                 <div class="collapsible-body">
-                  <ul class="col offset-s4" *ngFor="let group of groups.groups">
-                    <li>{{group}}</li>
+                  <ul class="col offset-s4" *ngFor="let group of groups">
+                    <li>{{group.name}}</li>
                   </ul>
                 </div>
               </li>

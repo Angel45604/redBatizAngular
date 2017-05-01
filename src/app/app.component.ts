@@ -11,13 +11,17 @@ import { Tool } from './tool/tool.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    groups: any = { name: 'Hoa' };
+    groups: any[] = [{ name: 'Nombre 1' }, { name: 'Nombre 2' }];
     toolURLS:String[]=['../assets/tools/dibujo/index.html'];
-    test:String='../assets/tools/dibujo/main.js';
+    loggedIn: boolean=false;
     contentIndex: number = -1;
-    contentMode: number = 1;
+    contentMode: number = 0;
     accessLevel: number = 1;  
     setAssignature(index: number) {
 
+    }
+    logIn(form: any): void {
+        console.log(form);
+        this.loggedIn = true;
     }
 }

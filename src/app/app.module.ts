@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -33,8 +33,7 @@ import { APPROUTER } from './commons/router';
     PublicationCard,
     PublicationContainer,
     Assignature,
-    Publicator,
-    Tool
+    Tool,
     Publicator,
     Page404,
     InitComponent
