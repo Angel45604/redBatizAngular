@@ -5,9 +5,10 @@
     <button type="submit">Iniciar Sesion</button>
   </form>
 </div>
+<sidenav-component accessLevel={{accessLevel}}></sidenav-component>
 <ng-template #app>
     <menubar-component></menubar-component>
-    <sidenav-component accessLevel={{accessLevel}}></sidenav-component>
+    
     <div class="row">
       <ul class="col offset-s4" *ngFor=" let group of groups">
         <li>{{group.name}}</li>
