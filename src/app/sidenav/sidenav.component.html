@@ -12,16 +12,18 @@
             </div>
         </li>
         <li class="bold">
-            <a href="#" class="waves-effect waves-cyan">
-                <i class="mdi-communication-email"></i> Notificaciones 
-                <span class="new badge">4</span>
+            <a routerLink="/assignature" class="waves-effect waves-cyan">
+                <i class="mdi-communication-email"></i> Herramientas 
+                <span class="new badge">1</span>
             </a>
         </li>
+        <li class="li-hover"><div class="divider"></div></li>
         <li class="bold">
             <a href="#" class="waves-effect waves-cyan">
                 <i class="mdi-editor-insert-invitation"></i> Horario
             </a>
         </li>
+        <li class="li-hover"><div class="divider"></div></li>
         <li>
           <ul *ngFor="let group of grs">
             <li>{{group.name}}</li>
@@ -30,7 +32,7 @@
         </li>
         <li class="no-padding" *ngIf="accessLevel==0; else groups">
             <ul class="collapsible collapsible-accordion">
-                <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> Materias</a>
+                <li class="bold"><a class="collapsible-header waves-effect waves-cyan" (click)="openDialog()"><i class="mdi-action-invert-colors"></i> Materias</a>
                     <div class="collapsible-body">
                         <ul>
                             <li>
@@ -45,13 +47,33 @@
                         </ul>
                     </div>
                 </li>
+                <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> Dibujo Técnico II
+            </a>
+        </li>
+        <li class="bold">
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> Física II
+            </a>
+        </li>
+        <li class="bold">
+            <a routerLink="/" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> Cálculo Diferencial
+            </a>
+        </li>
+        <li class="bold">
+            <a routerLink="/" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> Química II
+            </a>
+        </li>
             </ul>
         </li>
         <ng-template #groups>
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
               <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> Grupo</a>
+                <a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> Grupos</a>
                 <div class="collapsible-body">
                   <ul *ngFor="let group of grs">
                     <li>{{group.name}}</li>

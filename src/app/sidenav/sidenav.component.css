@@ -1,4 +1,10 @@
-﻿#left-sidebar-nav{
+﻿ .md-dialog-container {
+                                            position: fixed !important;
+                                            transform: translateX(300px);
+                                            background-color: white;
+                                            z-index: 100000;
+ }
+#left-sidebar-nav{
 	overflow: hidden;
 	z-index: 1;
 }

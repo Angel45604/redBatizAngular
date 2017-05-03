@@ -1,3 +1,5 @@
-﻿<div *ngFor="let comment of comments">
+﻿<body onload="setInterval(compareComments,3000)">
+<div *ngFor="let comment of comments">
   <publication-card-component publicator={{comment.publicator}} publicationDate={{comment.publicationDate}} publicationText={{comment.publicationText}}></publication-card-component>
 </div>
+</body>

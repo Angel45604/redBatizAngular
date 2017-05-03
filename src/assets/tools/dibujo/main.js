@@ -1,74 +1,155 @@
-console.log(3);
-var dir=true;
-var angle=0;
-var i=0;
-var anCon=0;
-var erase=false;
-function getCenters(c,str){
-	var cenNum=document.getElementById("cenNum").value;
-	angle=(Math.PI*2)/cenNum;
-	var cents=[];
-	var rad=str/(2*Math.sin(angle/2));
-	for(var i=0;i<cenNum;i++){
-		cents[i]=new Point(rad*Math.cos(i*angle+angle/2)+c.width/2,rad*Math.sin(i*angle+angle/2)+c.height/2);
+var c = document.getElementById("canvas");
+var ctx = c.getContext("2d");
+var w = window.innerWidth-9;
+var h = window.innerHeight-20;
+
+var snum=6;
+var sSnum=0;
+var off=0;
+var offCount=0;
+var rad=400;
+var xs=[];
+var ys=[];
+c.width = w;
+c.height = h;
+ctx.translate(w/2,h/2);
+var colOff=0;
+var colMode=0;
+var mode = 2;
+var mColor = false;
+var modeText="Wea 3D";
+
+
+
+function dynamic(e){
+	console.log(e.keyCode);
+	if(e.keyCode == 119){
+		snum++;
+
+	}else if(e.keyCode == 115){
+		snum--;
+
 	}
-	return cents;
+	if(e.keyCode ==100){
+		rad-=1;
+	}else if(e.keyCode == 101){
+		rad+=10;
+	}
+	if(e.keyCode==114){
+		colMode++;
+		if(colMode>2){
+			colMode=0;
+		}
+	}else if(e.keyCode==102){
+		colMode--;
+		if(colMode<0){
+			colMode=2;
+		}
+	}
+	if(e.keyCode==113){
+		offCount+=1;
+	}else if(e.keyCode==97){
+		offCount-=1;
+	}
+	if(e.keyCode==111 || e.keyCode==108){
+		mColor=!mColor;
+	}
+	if(e.keyCode==32){
+		mode=mode>2?mode+1:0;
+	}
+	if(e.keyCode==13){
+		snum=sSnum;
+		sSnum=0;
+	}
+	if(e.keyCode>=48 && e.keyCode<=57){
+		console.log(e.keyCode-48);
+		sSnum+=e.keyCode-48;
+	}
+
 }
-function Point(x, y){
-	this.x=x;
-	this.y=y;
-}
-function start(){
-	erase=true;
-	i=0;
-	anCon=0;
-}
-function draw(){
-	console.log(0);
-	var str=document.getElementById("lado").value;
-	var c=document.getElementById("canvas");
-	var ctx=getContext(c);
-	var centers=getCenters(c,str);
-	ctx.fillStyle="#ffffff";
-	var index=i;
-	while(index>=centers.length){
-		index-=centers.length;
+
+function update(){
+	w = window.innerWidth;
+    h = window.innerHeight;
+	var deg=(Math.PI*2)/snum;
+	xs=[];
+	ys=[];
+	for(var i=0;i<snum;i++){
+		xs[i]=Math.cos(deg*i+off)*rad;
+		ys[i]=Math.sin(deg*i+off)*rad;
 	}
-	ctx.strokeStyle="#ffffff";
-	ctx.beginPath();
-	if(anCon<angle){
-		ctx.arc(centers[index].x,centers[index].y,(i+1)*str,1.5*Math.PI+i*angle,1.5*Math.PI+i*angle+anCon);
-		anCon+=0.05;
-	}else{
-		ctx.arc(centers[index].x,centers[index].y,(i+1)*str,1.5*Math.PI+i*angle,1.5*Math.PI+i*angle+angle);
-		anCon=0;
-		i++;
+	off+=offCount/100;
+	colOff+=1;
+	if(colOff>=360){
+		colOff=0;
 	}
-	ctx.stroke();
-	for(var j=0;j<centers.length;j++){
-		line(ctx,centers[j].x,centers[j].y,centers[j].x+2000*Math.cos(j*angle+angle/2),centers[j].y+2000*Math.sin(j*angle+angle/2));
-	}
-	if(erase){
-		ctx.fillStyle="#0000";
-		ctx.clearRect(0,0,c.width,c.height);
-		erase=false;
-	}
+
 }
 function line(context, x1,y1, x2,y2,col){
 	context.save();
 	context.beginPath();
-	context.strokeStyle="#fff";
+	if(colMode==0){
+		context.strokeStyle="#fff";
+	}else if(colMode==1){
+		context.strokeStyle="hsl("+colOff+",100%,50%)";
+	}else if(colMode==2){
+		context.strokeStyle="hsl("+col+",100%,50%)";
+	}
 	context.moveTo(x1,y1);
-	context.lineTo(x2,y2);
+	if(mode==0){
+		context.lineTo(x2,y2);
+	}
+	else if(mode==1){
+		context.arc(x1,y1,rad,0,Math.PI/rad);
+	}else if(mode==2){
+		context.lineTo(x2,y2);
+
+		var angle = (Math.PI*2)/snum;
+		var str = rad*(2*Math.sin(angle/2));
+		for(var i=0;i<200;i++){
+			var index=i;
+			while(index>=xs.length){
+				index-=xs.length;
+			}
+			context.arc(xs[index],ys[index],(i)*str,1.5*Math.PI+i*angle+offCount,1.5*Math.PI+i*angle+offCount+angle);
+		}
+
+	}
 	context.stroke();
 	context.restore();
 }
-function getContext(c){
-	if(c.width!=window.innerWidth){
-		c.width=window.innerWidth;
+function draw(){
+	update();
+	if(mColor){
+		ctx.fillStyle="hsla(0,100%,0%,0.05)";
 	}
-	if(c.height!=window.innerHeight-100){
-		c.height=window.innerHeight-100;
+	else{
+		ctx.fillStyle="#000";
 	}
-	return c.getContext("2d");
+	
+	ctx.fillRect(-w/2,-h/2,w,h);
+	ctx.fillStyle="#ffffff";
+	ctx.font = "20px Arial";
+	ctx.fillText("Lados: "+snum,-w/2+50,-h/2+55);
+	ctx.fillText("Velocidad: "+offCount,-w/2+180,-h/2+55);
+	//ctx.fillText("Modo: " + modeText,-w/2+50, -h/2+100);
+
+	//ctx.fillText("Girar: Q/A",-w/2+50, -h/2+150);
+	//ctx.fillText("+ - Lados: W/S",-w/2+50, -h/2+200);
+	//ctx.fillText("Tamaño: E/D",-w/2+50, -h/2+250);
+	//ctx.fillText("Color: R/F",-w/2+50, -h/2+300);
+
+
+	var col=0;
+    for(var i=0;i<xs.length;i++){
+    	for(var j=0;j<=xs.length/2;j++){
+    		if(i+j>=xs.length){
+    			line(ctx,xs[i],ys[i],xs[i+j-xs.length],ys[i+j-xs.length],col);
+    		}else{
+    			line(ctx,xs[i],ys[i],xs[i+j],ys[i+j],col);
+    		}
+    		col++;
+    	}
+
+    }
 }

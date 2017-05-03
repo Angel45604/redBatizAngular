@@ -16,7 +16,7 @@ export class PublicationContainer implements OnInit, OnChanges{
     ){}
 
     comments:Comment[];
-
+    newcomments:Comment[];
     @Input() publicator: string;
     @Input() publicationDate: string;
     @Input() publicationText: string;
@@ -30,6 +30,23 @@ export class PublicationContainer implements OnInit, OnChanges{
             });
     }
 
+    loadNewComments(){
+        this.commentService.getComments()
+        .subscribe(
+            comments => this.newcomments = comments,
+            err =>{
+                console.log(err);
+            }
+        );
+    }
+
+    compareComments(){
+        this.loadNewComments();
+        if(this.comments!=this.newcomments){
+            console.log(2);
+        }
+    }    
+
     ngOnInit(){
     this.loadComments();
     }
@@ -38,4 +55,5 @@ export class PublicationContainer implements OnInit, OnChanges{
         this.loadComments();
         EmitterService.get(this.publicator).subscribe((comments:Comment[]) => {this.comments = comments});
     }
+
 }

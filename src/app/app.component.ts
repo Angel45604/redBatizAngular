@@ -4,6 +4,8 @@ import { Menubar } from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
 import { Publicator } from './publicator/publicator.component';
 import { Tool } from './tool/tool.component';
+import {MdDialog} from '@angular/material';
+import {Profile} from './profile/profile.component';
 
 @Component({
   selector: 'app-component',
@@ -11,6 +13,11 @@ import { Tool } from './tool/tool.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    constructor(public dialog: MdDialog) {}
+
+  openDialog() {
+    this.dialog.open(Profile);
+  }
     //Voy a hacer un array para hacer el inicio de sesion todo chafa
     users: any[] = [{
         info: {
@@ -53,8 +60,7 @@ export class AppComponent {
     setAssignature(index: number) {
 
     }
-    constructor() {
-    }
+
     //En esta funcion se 'valida' los datos que el usuario ingresa
     logIn(form: any): void {
         for (var i = 0; i < this.users.length; i++){
