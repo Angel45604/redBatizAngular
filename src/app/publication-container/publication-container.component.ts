@@ -1,4 +1,4 @@
-import { Component,Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+﻿import { Component,Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import {CommentService} from '../services/publishCard.service';
@@ -34,7 +34,8 @@ export class PublicationContainer implements OnInit, OnChanges{
     this.loadComments();
     }
 
-    ngOnChanges(changes:any){
+    ngOnChanges(changes: any) {
+        this.loadComments();
         EmitterService.get(this.publicator).subscribe((comments:Comment[]) => {this.comments = comments});
     }
 }

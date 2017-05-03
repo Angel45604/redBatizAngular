@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { PublicationCard } from '../publication-card/Model/publication-card';
 import {Observable} from 'rxjs/Rx';

@@ -1,21 +1,26 @@
 ﻿<div *ngIf="!loggedIn;else app">
   <form #f="ngForm" (ngSubmit)="logIn(f.value)">
-    <input type="text" placeholder="Boleta" name="boleta" ngModel />
-    <input type="text" placeholder="Contraseña" name="contrasena" ngModel />
+    <input type="text" placeholder="Usuario" name="identifier" ngModel />
+    <input type="text" placeholder="Contraseña" name="password" ngModel />
     <button type="submit">Iniciar Sesion</button>
   </form>
 </div>
 <ng-template #app>
-    <menubar-component></menubar-component>
-    <sidenav-component accessLevel={{accessLevel}}></sidenav-component>
-    <div class="row">
-      <ul class="col offset-s4" *ngFor=" let group of groups">
-        <li>{{group.name}}</li>
-      </ul>
-      <publicator-component class="col offset-s4" *ngIf="accessLevel>0 && contentMode==0"></publicator-component>
-      <publication-container-component class="col offset-s4"  *ngIf="contentMode==0; else assi"></publication-container-component>
-        <ng-template #assi>
-          <assignature-component class="col offset-s4"></assignature-component>
-        </ng-template>
+  <menubar-component (logOutEvent)="logOut()"></menubar-component>
+  <sidenav-component [userInfo]="currentUser.info" [accessLevel]="currentUser.accessLevel"></sidenav-component>
+  <div class="row">
+    <div class="col offset-s4">
+      <div *ngIf="contentMode==0;else assi">
+        <publicator-component class="col offset-s4" [publicatorName]="currentUser.info.name" *ngIf="currentUser.accessLevel>0"></publicator-component>
+        <!-- Dejando volar mi imaginacion -->
+        <div *ngIf="currentUser.accessLevel>2">
+          <!-- Aqui iba a poner algo para que el administrador pudiera ver todas las publicaciones o solo algunas con cosas especificas, como el grupo -->
+        </div>
+        <publication-container-component class="col offset-s4"></publication-container-component>
+      </div>
+      <ng-template #assi>
+        <assignature-component class="col offset-s4"></assignature-component>
+      </ng-template>
     </div>
+  </div>
 </ng-template>

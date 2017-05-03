@@ -1,19 +1,19 @@
-﻿<aside id="left-sidebar-nav">   
+﻿<aside id="left-sidebar-nav" (click)="log()">   
     <ul id="slide-out" class="side-nav fixed leftside-navigation">
         <li class="user-details cyan darken-2">
             <div class="row">
                 <div class="col col s4 m4 l4">
-                    <img src="../../assets/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                    <img [src]="userInfo.profileImg" alt="" class="circle responsive-img valign profile-image">
                 </div>
                 <div class="col col s8 m8 l8">
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Angel Marcos<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <p class="user-roal">2016090395</p>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">{{userInfo.name}}<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <p class="user-roal">{{userInfo.identifier}}</p>
                 </div>
             </div>
         </li>
         <li class="bold">
-            <a href="#l" class="waves-effect waves-cyan">
-                <i class="mdi-communication-email"></i> Mensajes 
+            <a href="#" class="waves-effect waves-cyan">
+                <i class="mdi-communication-email"></i> Notificaciones 
                 <span class="new badge">4</span>
             </a>
         </li>
@@ -21,6 +21,12 @@
             <a href="#" class="waves-effect waves-cyan">
                 <i class="mdi-editor-insert-invitation"></i> Horario
             </a>
+        </li>
+        <li>
+          <ul *ngFor="let group of grs">
+            <li>{{group.name}}</li>
+            <li>Hola</li>
+          </ul>
         </li>
         <li class="no-padding" *ngIf="accessLevel==0; else groups">
             <ul class="collapsible collapsible-accordion">
@@ -45,10 +51,11 @@
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
               <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> Grupos</a>
+                <a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> Grupo</a>
                 <div class="collapsible-body">
-                  <ul class="col offset-s4" *ngFor="let group of groups">
+                  <ul *ngFor="let group of grs">
                     <li>{{group.name}}</li>
+                    <li>Hola</li>
                   </ul>
                 </div>
               </li>

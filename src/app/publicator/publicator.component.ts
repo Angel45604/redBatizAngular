@@ -13,13 +13,14 @@ import { PublicationCard } from '../publication-card/Model/publication-card';
     providers:[CommentService]
 })
 export class Publicator{
-
+    @Input() publicatorName: string;
+    publicationText: string;
   constructor(
     private commentService:CommentService
   ){}
 
   selectedValue: string;
-  private publication = new PublicationCard('Yio Merengues', new Date(), '');
+  private publication;
   private editing = false;
   
   groups = [
@@ -32,8 +33,8 @@ export class Publicator{
   @Input()listId:string;
 
   submitPublication(){
-    let commentOperation:Observable<Comment[]>;
-
+      let commentOperation: Observable<Comment[]>;
+    this.publication = new PublicationCard(this.publicatorName, new Date(), this.publicationText);
     if(!this.editing){
       commentOperation = this.commentService.addComment(this.publication);
     }else{

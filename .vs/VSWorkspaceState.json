@@ -1,13 +1,19 @@
 {
   "ExpandedNodes": [
     "",
+    "\\src",
     "\\src\\app",
-    "\\src\\app\\menubar",
     "\\src\\app\\publication-card",
-    "\\src\\app\\publication-container",
-    "\\src\\app\\sidenav",
-    "\\src\\backend"
+    "\\src\\app\\publication-card\\Model",
+    "\\src\\app\\publicator",
+    "\\src\\app\\services",
+    "\\src\\app\\tool",
+    "\\src\\backend",
+    "\\src\\backend\\bin",
+    "\\src\\backend\\router",
+    "\\src\\backend\\router\\routes",
+    "\\src\\backend\\services"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\app\\publication-container\\publication-container.component.ts",
   "PreviewInSolutionExplorer": false
 }
