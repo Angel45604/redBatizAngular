@@ -5,6 +5,7 @@
     <button type="submit">Iniciar Sesion</button>
   </form>
 </div>
+<sidenav-component accessLevel={{accessLevel}}></sidenav-component>
 <ng-template #app>
   <menubar-component (logOutEvent)="logOut()"></menubar-component>
   <sidenav-component [userInfo]="currentUser.info" [accessLevel]="currentUser.accessLevel"></sidenav-component>
