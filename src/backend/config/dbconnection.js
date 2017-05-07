@@ -18,7 +18,26 @@ db.sequelize = sequelize;
 
 //Models/tables
 db.tasks = require('../models/Task.js')(sequelize, Sequelize);
+db.roles = require('../models/Roles.js')(sequelize, Sequelize);
 db.users = require('../models/User.js')(sequelize, Sequelize);
+
+db.roles.sync({force: true}).then(function () {
+  // Table created
+  return db.roles.bulkCreate([
+          { roleDescription: 'student'},
+          { roleDescription: 'teacher'},
+          { roleDescription: 'admin',}
+          ]).then(function() {
+            return db.roles.findAll();
+            }).then(function(roles) {
+              console.log(roles)
+            })
+});
+
+
+db.users.belongsTo(db.roles);
+
+
 
 module.exports = db;
 // var connection=mysql.createPool({

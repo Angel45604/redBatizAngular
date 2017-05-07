@@ -64,6 +64,6 @@ export class AppComponent implements OnInit{
     //Aqui esta el json de el usuario con su informacion, falta su grupo y mas cosas
     ngOnInit(){
         this.userName= this.currentUser.name;
-        this.userId = this.currentUser.login;
+        this.userId = this.currentUser.username;
     }
 }

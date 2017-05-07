@@ -10,7 +10,7 @@ import {AlertService} from '../services/alert.service'
 })
 
 export class LoginComponent implements OnInit {
-    login:string;
+    username:string;
     password:string;
     model: any = {};
     loading = false;
@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
     }
 
     logino() {
-        console.log(this.login +" "+ this.password);
+        console.log(this.username +" "+ this.password);
         this.loading = true;
-        this.authenticationService.login(this.login, this.password)
+        this.authenticationService.login(this.username, this.password)
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);

@@ -2,6 +2,7 @@
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 
+import{ User } from '../models/user';
 import { CommentService } from '../services/publishCard.service';
 import { EmitterService } from '../services/emmiter.service';
 import { PublicationCard } from '../publication-card/Model/publication-card';
@@ -13,11 +14,13 @@ import { PublicationCard } from '../publication-card/Model/publication-card';
     providers:[CommentService]
 })
 export class Publicator{
-    @Input() publicatorName: string;
+    currentUser:User;
     publicationText: string;
   constructor(
-    private commentService:CommentService
-  ){}
+    private commentService:CommentService,
+  ){
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   selectedValue: string;
   private publication;
@@ -34,7 +37,7 @@ export class Publicator{
 
   submitPublication(){
       let commentOperation: Observable<Comment[]>;
-    this.publication = new PublicationCard(this.publicatorName, new Date(), this.publicationText);
+    this.publication = new PublicationCard(this.currentUser.name, new Date(), this.publicationText);
     if(!this.editing){
       commentOperation = this.commentService.addComment(this.publication);
     }else{
