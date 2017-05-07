@@ -1,19 +1,12 @@
-﻿
-<md-card class="card">
+﻿<md-card>
   <md-card-header>
-    <div  class="header-image">
-        <img (click)="openDialog()" md-card-sm-image src="assets/images/avatar.jpg" alt="Avatar" class="circle responsive-img valign profile-image">
-    </div>
-    <md-card-title>{{publicator}}</md-card-title>
-    <md-card-subtitle><b>Fecha Entrega: </b>{{publicationDate}}</md-card-subtitle>
+      <img md-card-avatar src="../assets/images/avatar.jpg">
+      <md-card-title>{{publicator}}</md-card-title>
+      <md-card-subtitle><b>Fecha de entrega: </b>{{publicationDate}}</md-card-subtitle>
   </md-card-header>
+  <img md-card-lg-image src="../assets/images/isom.png">
   <md-card-content>
-    <p>
-      {{publicationText}}
-    </p>
+    <h3 class="md-subhead">{{publicationText}}</h3>
+    <p class="md-body-1">Here is some more content</p>
   </md-card-content>
-  <md-card-actions>
-    <button md-mini-fab></button>
-    <button md-mini-fab></button>
-  </md-card-actions>
 </md-card>

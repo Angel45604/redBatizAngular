@@ -1,60 +1,51 @@
-﻿<div *ngIf="!loggedIn;else app">
-  <form #f="ngForm" (ngSubmit)="logIn(f.value)">
+﻿<menubar-component></menubar-component>
 
-<div class=" card registro" id="registro">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-        <div class="row">
-            <div class="col s2">
-                <img src="images/ipn.png" alt="IPN" width="150px" height="150px">
-            </div>
-            <div class="col s4 offset-s2">
-                <h1>Red Bátiz</h1>
-            </div>
-            <div class="col s2 offset-s2">
-                <img src="images/logo.png" alt="BATIZ" width="150px" height="150px">
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
-                <input type="text" placeholder="Usuario" id="usuario" class="validate" name="identifier" ngModel>
-                <label for="usuario">Usuario</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
-                <input type="password" id="contrasenia" placeholder="Contraseña" class="validate" name="password" ngModel>
-                <label for="contrasenia">Contraseña</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s6 offset-s5">
-                <button class="btn waves-effect waves-light" type="submit" name="reg" id="reg">Iniciar</button>
-            </div>
-        </div>
-    </div>
-      </form>
-    </div>
-<ng-template #app>
-  <menubar-component (logOutEvent)="logOut()"></menubar-component>
-  <sidenav-component [userInfo]="currentUser.info" [accessLevel]="currentUser.accessLevel"></sidenav-component>
-  <div class="row">
-    <div class="col offset-s4">
-      <div *ngIf="contentMode==0;else assi">
-        <publicator-component class="col offset-s4" [publicatorName]="currentUser.info.name" *ngIf="currentUser.accessLevel>0"></publicator-component>
-        <!-- Dejando volar mi imaginacion -->
-        <div *ngIf="currentUser.accessLevel>2">
-          <!-- Aqui iba a poner algo para que el administrador pudiera ver todas las publicaciones o solo algunas con cosas especificas, como el grupo -->
-          
-        </div>
-        <publication-container-component class="col offset-s4"></publication-container-component>
+<md-sidenav-container class="example-sidenav-fab-container">
+  <md-sidenav #sidenav mode="side" opened="true">
+    <button md-mini-fab class="example-fab" (click)="sidenav.toggle()">
+      <md-icon>add</md-icon>
+    </button>
+    <div class="example-scrolling-content" layout="row">
+      <div class="profile-container">
+          <div class="profile-img">
+            <img src="../assets/images/avatar.jpg" alt="Avatar" width="50%">
+          </div>
+          <div class="profile-data tc-grey-50 md-body-1">
+              <b>{{userName}}</b><br>
+              <b>{{userId}}</b>
+          </div>
       </div>
-      <ng-template #assi>
-        <assignature-component class="col offset-s4"></assignature-component>
-      </ng-template>
+
+      <hr>
+      <div class="sidenav-data">
+        <div class="element1">
+            <button md-raised-button class="text-upper">Element 1</button>
+        </div>
+        <div class="element1">
+            <button md-raised-button class="text-upper">Element 2</button>
+        </div>
+        <div class="element1">
+            <button md-raised-button class="text-upper">Element 3</button>
+        </div>
+        <div class="element1">
+            <button md-raised-button class="text-upper">Element 4</button>
+        </div>
+        <div class="element1">
+            <button md-raised-button class="text-upper">Element 5</button>
+        </div>
+        <hr>
+        <div class="element1">
+            
+        </div>
+      </div>
     </div>
+  </md-sidenav>
+  <button md-mini-fab class="example-fab" (click)="sidenav.toggle()">
+    <md-icon>add</md-icon>
+  </button>
+  <div class="main-content">
+    <div class="publication-element">
+      <publication-container-component></publication-container-component>
+</div>
   </div>
-</ng-template>
+</md-sidenav-container>

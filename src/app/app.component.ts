@@ -1,23 +1,29 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Sidenav } from './sidenav/sidenav.component';
 import { Menubar } from './menubar/menubar.component';
 import { PublicationCard } from './publication-card/publication-card.component';
 import { Publicator } from './publicator/publicator.component';
 import { Tool } from './tool/tool.component';
-import {MdDialog} from '@angular/material';
+import {MdDialog, MdSidenav} from '@angular/material';
 import {Profile} from './profile/profile.component';
+import {User} from './models/user';
 
 @Component({
   selector: 'app-component',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-    constructor(public dialog: MdDialog) {}
+export class AppComponent implements OnInit{
+    currentUser:User;
+    userName:string;
+    userId:string;
+    constructor() {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log(this.currentUser);
+    }
+    
+    
 
-  openDialog() {
-    this.dialog.open(Profile);
-  }
     //Voy a hacer un array para hacer el inicio de sesion todo chafa
     users: any[] = [{
         info: {
@@ -56,27 +62,8 @@ export class AppComponent {
     //Esta es para saber del tipo de cosa que se esta viendo, cual de todos esta viendo(Ejemplo: Se esta viendo una herramienta y la herramienta que se esta viendo es determinada por esta variable)
     contentIndex: number = -1;
     //Aqui esta el json de el usuario con su informacion, falta su grupo y mas cosas
-    currentUser: any;
-    setAssignature(index: number) {
-
-    }
-
-    //En esta funcion se 'valida' los datos que el usuario ingresa
-    logIn(form: any): void {
-        for (var i = 0; i < this.users.length; i++){
-            if (form.password == this.users[i].info.password && form.identifier == this.users[i].info.identifier){
-                this.loggedIn = true;
-                this.currentUser = this.users[i];
-                break;
-            }
-        }
-        if (!this.loggedIn){
-            alert("Nonono");
-        }
-    }
-    //Por ahora lo unico que se hace al cerrar la sesion es cambiar un booleano y resetear las variables
-    logOut() {
-        this.loggedIn = false;
-        this.currentUser = null;
+    ngOnInit(){
+        this.userName= this.currentUser.name;
+        this.userId = this.currentUser.login;
     }
 }
