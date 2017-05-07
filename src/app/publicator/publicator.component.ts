@@ -16,6 +16,7 @@ import { PublicationCard } from '../publication-card/Model/publication-card';
 export class Publicator{
     currentUser:User;
     publicationText: string;
+    publicationFoto: File;
   constructor(
     private commentService:CommentService,
   ){

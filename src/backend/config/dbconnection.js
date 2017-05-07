@@ -21,7 +21,7 @@ db.tasks = require('../models/Task.js')(sequelize, Sequelize);
 db.roles = require('../models/Roles.js')(sequelize, Sequelize);
 db.users = require('../models/User.js')(sequelize, Sequelize);
 
-db.roles.sync({force: true}).then(function () {
+db.roles.sync({force: false}).then(function () {
   // Table created
   return db.roles.bulkCreate([
           { roleDescription: 'student'},
@@ -35,7 +35,8 @@ db.roles.sync({force: true}).then(function () {
 });
 
 
-db.users.belongsTo(db.roles);
+db.roles.hasMany(db.users,{foreignKey:'idRolfk', sourceKey:'id'});
+db.users.belongsTo(db.roles,{foreignKey:'idRolfk', sourceKey:'id'});
 
 
 

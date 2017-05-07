@@ -8,58 +8,69 @@ var express = require('express'),
     Store = require('express-sequelize-session')(expressSession.Store),
     cors = require('cors');
 
-sequelize = new Sequelize('test1', 'root', 'n0m3l0', {
-  host: "localhost",
-  port: 3306,
-  dialect: 'mysql',
-  define:{
-    underscored: true
-  },
-  logging: false
-});
+const DB = require('../../backend/config/dbconnection.js');
 
-//MODELS
-const USER =sequelize.define('user', {
-  username: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  name:{
-    type: Sequelize.STRING,
-    allowNull:false
-  },
-  surname:{
-    type: Sequelize.STRING,
-    allowNull:false
-  }
-});
+// sequelize = new Sequelize('test1', 'root', 'n0m3l0', {
+//   host: "localhost",
+//   port: 3306,
+//   dialect: 'mysql',
+//   define:{
+//     underscored: true
+//   },
+//   logging: false
+// });
 
-const ROLES =sequelize.define('roleList',{
-  roleDescription:{
-    type:Sequelize.STRING,
-    allowNull:false
-  }
-});
+// //MODELS
+// const USER =sequelize.define('user', {
+//   username: {
+//     type: Sequelize.STRING,
+//     allowNull: false,
+//     unique: true
+//   },
+//   password: {
+//     type: Sequelize.STRING,
+//     allowNull: false
+//   },
+//   name:{
+//     type: Sequelize.STRING,
+//     allowNull:false
+//   },
+//   surname:{
+//     type: Sequelize.STRING,
+//     allowNull:false
+//   }
+// });
 
-console.log(USER);
+// const ROLES =sequelize.define('roleList',{
+//   roleDescription:{
+//     type:Sequelize.STRING,
+//     allowNull:false
+//   }
+// });
 
-store = new Store(sequelize);
+// console.log(USER);
 
-USER.belongsTo(ROLES,{
-  foreignKeyConstraint:true
-});
+store = new Store(DB.sequelize);
 
-USER.belongsTo(store.Session, {
+// ROLES.hasMany(USER,{foreignKey:'idRolfk', sourceKey:'id'});
+// USER.belongsTo(ROLES,{foreignKey:'idRolfk', sourceKey:'id'});
+
+DB.users.belongsTo(store.Session, {
   foreignKeyConstraint: true
 });
 
+// ROLES.bulkCreate([
+//           { roleDescription: 'student'},
+//           { roleDescription: 'teacher'},
+//           { roleDescription: 'admin',}
+//           ]).then(function() {
+//             return ROLES.findAll();
+//             }).then(function(roles) {
+//               console.log(roles)
+//             });
+
 login = function(req, done) {
-  return USER.findOne({
+  return DB.users.findOne({
     where: {
       username: req.body.username,
       password: req.body.password
@@ -89,7 +100,7 @@ login = function(req, done) {
 };
 
 logout = function(req, done) {
-  return USER.findOne({
+  return DB.users.findOne({
     where: {
       username: req.session.user
     }
@@ -175,12 +186,12 @@ app.get('/private', function(req, res) {
 });
 
 module.exports = function(done) {
-  return USER.sync({
-    force: true
+  return DB.sequelize.sync({
+    force:false
   }).then(function() {
     return done(null, app, {
       Session: store.Session,
-      USER: USER
+      USER: DB.users
     });
   })["catch"](function(err) {
     return done(err);
