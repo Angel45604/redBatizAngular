@@ -7,23 +7,23 @@ import 'rxjs/add/operator/map'
 export class AuthenticationService {
     constructor(private http: Http) { }
 
-    login(login: string, password: string) {
-        return this.http.post('http://localhost:13441/login', { login: login, password: password })
+    login(username: string, password: string) {
+        return this.http.post('http://localhost:13441/login', { username: username, password: password })
             .map((response: Response) => {
                  
-                // login successful if there's a jwt token in the response
+                // login successful
                 let user = response.json();
                 console.log(user);
                 if (user) {
                    
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    // store user
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
             });
     }
 
     logout() {
-        // remove user from local storage to log user out
+        // remove user from local storage
         localStorage.removeItem('currentUser');
         return this.http.get('http://localhost:13441/logout');
     }

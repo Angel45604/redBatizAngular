@@ -50,7 +50,9 @@ console.log(USER);
 
 store = new Store(sequelize);
 
-USER.belongsTo(ROLES);
+USER.belongsTo(ROLES,{
+  foreignKeyConstraint:true
+});
 
 USER.belongsTo(store.Session, {
   foreignKeyConstraint: true
@@ -173,8 +175,8 @@ app.get('/private', function(req, res) {
 });
 
 module.exports = function(done) {
-  return sequelize.sync({
-    force: false
+  return USER.sync({
+    force: true
   }).then(function() {
     return done(null, app, {
       Session: store.Session,
