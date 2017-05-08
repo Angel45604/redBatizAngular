@@ -18,8 +18,12 @@ export class PublicationContainer implements OnInit, OnChanges{
     comments:Comment[];
     newcomments:Comment[];
     @Input() publicator: string;
-    @Input() publicationDate: string;
     @Input() publicationText: string;
+    @Input() containerMode:number=0;
+    @Input() containerFilter: string;
+    @Input() accessLevel:number;
+    @Input() usrName:string;
+    @Input() usrGroup:string;
 
     loadComments(){
         this.commentService.getComments()

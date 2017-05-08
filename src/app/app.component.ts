@@ -21,41 +21,22 @@ export class AppComponent implements OnInit{
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         console.log(this.currentUser);
     }
+
+    publicationContainerMode: number=0;
+    publicationContainerFilter: string;
+    setPublicationContainerMode(publiMode: number, publiFilter: string): void {
+        this.publicationContainerMode = publiMode;
+        this.publicationContainerFilter = publiFilter;
+    }
+
+
     
     
 
-    //Voy a hacer un array para hacer el inicio de sesion todo chafa
-    users: any[] = [{
-        info: {
-            identifier: '2016090811',
-            name: 'Pablo Test',
-            profileImg: '../../assets/images/avatar.jpg',
-            password: '34'
-        },
-        accessLevel: 0
-    },
-    {
-        info: {
-            identifier: 'maestro1',
-            name: 'Soy un maestro Jaja',
-            profileImg: '../../assets/images/avatar.jpg',
-            password: '55'
-        },
-        accessLevel:1
-    },
-    {
-        info: {
-            identifier: 'admin',
-            name: '¿El admin puede publicar? no se',
-            profileImg: '../../assets/images/avatar.jpg',
-            password: '123'
-        },
-        accessLevel: 3
-    }];
+
     //Hice este array para acceder a las herramientas pero igual y las haces de otra manera
     toolURLS: String[] = ['../assets/tools/dibujo/index.html'];
 
-    loggedIn: boolean = false;
     //Hay dos variables de content
     //Esta es para saber que tipo de cosa se esta mostrando en pantalla (la pagina principal o el menu de herramientas u otra cosa)
     contentMode: number = 0;
@@ -63,6 +44,7 @@ export class AppComponent implements OnInit{
     contentIndex: number = -1;
     //Aqui esta el json de el usuario con su informacion, falta su grupo y mas cosas
     ngOnInit(){
+        console.log(this.currentUser);
         this.userName= this.currentUser.name;
         this.userId = this.currentUser.username;
     }

@@ -3,6 +3,6 @@ export class Student {
     password: string;
     name: string;
     surname:string;
-    role_list_id:number;
+    idRolfk:number;
     group:string;
 }

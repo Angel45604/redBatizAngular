@@ -1,7 +1,8 @@
-export class PublicationCard{
+﻿export class PublicationCard{
     constructor(
         public publicator: string, 
-        public publicationDate: Date, 
+        public publicationGroup: string,
+        public publicationAssignature:string,
         public publicationText:string
         ){}
 }

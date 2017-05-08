@@ -22,19 +22,18 @@
       <div class="sidenav-data">
         <div class="element1">
             <button md-raised-button class="text-upper">Element 1</button>
+          <div *ngIf="currentUser.idRolfk>1">
+            Grupos
+            <a href="#" (click)="setPublicationContainerMode(1,'4IM7')">4IM7</a>
+            <a href="#" (click)="setPublicationContainerMode(1,'4IM8')">4IM8</a>
+            <a href="#" (click)="setPublicationContainerMode(1,'4IM9')">4IM9</a>
+          </div>
+          <div *ngIf="currentUser.idRolfk==1">
+          <a href="#" (click)="setPublicationContainerMode(2,'Matematicas')">Matematicas</a>
+          <a href="#" (click)="setPublicationContainerMode(2,'Dibujo')">Dibujo</a>
+          </div>
         </div>
-        <div class="element1">
-            <button md-raised-button class="text-upper">Element 2</button>
-        </div>
-        <div class="element1">
-            <button md-raised-button class="text-upper">Element 3</button>
-        </div>
-        <div class="element1">
-            <button md-raised-button class="text-upper">Element 4</button>
-        </div>
-        <div class="element1">
-            <button md-raised-button class="text-upper">Element 5</button>
-        </div>
+
         <hr>
         <div class="element1">
             
@@ -45,8 +44,8 @@
   <div class="main-content">
     <div class="spacer"></div>
     <div class="publication-element"> 
-      <publicator-component></publicator-component>
-      <publication-container-component></publication-container-component>
+      <publicator-component *ngIf="currentUser.idRolfk>=1"></publicator-component>
+      <publication-container-component [usrGroup]="currentUser.group" [usrName]="currentUser.name" [accessLevel]="currentUser.idRolfk" [containerMode]="publicationContainerMode" [containerFilter]="publicationContainerFilter"></publication-container-component>
     </div>
 <div class="spacer"></div>
   </div>

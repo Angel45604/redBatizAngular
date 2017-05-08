@@ -21,8 +21,6 @@ db.tasks = require('../models/Task.js')(sequelize, Sequelize);
 db.roles = require('../models/Roles.js')(sequelize, Sequelize);
 db.users = require('../models/User.js')(sequelize, Sequelize);
 db.groups = require('../models/Groups')(sequelize, Sequelize);
-db.RELuser_role = require('../models/RELuser-rol')(sequelize,Sequelize);
-db.RELuser_group = require('../models/RELuser-group')(sequelize,Sequelize);
 
 db.groups.sync({force:false}).then(function(){
   return db.groups.bulkCreate([
@@ -133,16 +131,20 @@ db.groups.sync({force:false}).then(function(){
     {group:'6IV6'},
     {group:'6IV7'},
     {group:'6IV8'},
-    {group:'6IV9'},
-  ])
-})
+    {group:'6IV9'}
+  ]).then(function(){
+    return db.groups.findAll();
+  }).then(function(groups){
+    console.log(groups)
+  })
+});
 
 db.roles.sync({force: false}).then(function () {
   // Table created
   return db.roles.bulkCreate([
           { roleDescription: 'student'},
           { roleDescription: 'teacher'},
-          { roleDescription: 'admin',}
+          { roleDescription: 'admin'}
           ]).then(function() {
             return db.roles.findAll();
             }).then(function(roles) {
@@ -151,12 +153,8 @@ db.roles.sync({force: false}).then(function () {
 });
 
 
-db.group.hasMany(db.users,{foreignKey:'idGroupfk',sourceKey:'id'}),
-db.users.belongsTo(db.group,{foreignKey:'idGroup',sourceKey:'id'});
-
 db.roles.hasMany(db.users,{foreignKey:'idRolfk', sourceKey:'id'});
 db.users.belongsTo(db.roles,{foreignKey:'idRolfk', sourceKey:'id'});
-
 
 
 module.exports = db;

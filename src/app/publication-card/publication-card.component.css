@@ -5,6 +5,14 @@
     width: 6em;
 }
 
+md-card-subtitle{
+  display: flfex;
+}
+
+.element{
+  flex: 1;
+}
+
 @media(max-width:600px){
   .image{
     width: 100%;

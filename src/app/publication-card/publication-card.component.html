@@ -1,8 +1,8 @@
-﻿<md-card>
+﻿<md-card (click)="ola()">
   <md-card-header>
       <img md-card-avatar src="../assets/images/avatar.jpg">
       <md-card-title>{{publicator}}</md-card-title>
-      <md-card-subtitle><b>Fecha de entrega: </b>{{publicationDate}}</md-card-subtitle>
+      <md-card-subtitle><div class="element"><b>Fecha de entrega: </b>9/5/17</div><div class="element" *ngIf="accessLevel>1">{{publicationGroup}}</div></md-card-subtitle>
   </md-card-header>
   <img class="image" md-card-lg-image src="../assets/images/isom.png">
   <md-card-content>

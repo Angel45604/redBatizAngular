@@ -23,22 +23,32 @@ export class Publicator{
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  selectedValue: string;
+  selectedGroup: string;
+  selectedAssignature: string;
   private publication;
   private editing = false;
   
   groups = [
-    {value: '4IM1', viewValue: '4IM1'},
-    {value: '4IM2', viewValue: '4IM2'},
-    {value: '4IM3', viewValue: '4IM3'}
+    {value: '4IM7', viewValue: '4IM7'},
+    {value: '4IM8', viewValue: '4IM8'},
+    {value: '4IM9', viewValue: '4IM9'}
   ];
+
+
+assignatures=[
+    {value:'Matematicas',viewValue:'Matematicas'},
+    {value:'Dibujo',viewValue:'Dibujo'},
+    {value:'Fisica',viewValue:'Fisica'}
+  ];
+
 
   @Input()editId:string;
   @Input()listId:string;
 
   submitPublication(){
+    console.log(this.selectedAssignature,this.selectedGroup);
       let commentOperation: Observable<Comment[]>;
-    this.publication = new PublicationCard(this.currentUser.name, new Date(), this.publicationText);
+    this.publication = new PublicationCard(this.currentUser.name,""+this.selectedGroup,""+this.selectedAssignature, this.publicationText);
     if(!this.editing){
       commentOperation = this.commentService.addComment(this.publication);
     }else{
@@ -48,7 +58,7 @@ export class Publicator{
     commentOperation.subscribe(
       comments => {
         EmitterService.get(this.listId).emit(comments);
-        this.publication = new PublicationCard('',new Date(),'');
+        this.publication = new PublicationCard('','','','');
         if(this.editing)this.editing = !this.editing;
       },
       err =>{

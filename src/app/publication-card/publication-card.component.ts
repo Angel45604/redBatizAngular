@@ -17,6 +17,8 @@ export class PublicationCard{
     // Define input properties
     @Input() comment: Comment;
     @Input() publicator:string;
-    @Input() publicationDate:string;
+    @Input() publicationGroup: string;
+    @Input() publicationAssignature: string;
     @Input() publicationText:string;
+    @Input() accessLevel:number;
 }

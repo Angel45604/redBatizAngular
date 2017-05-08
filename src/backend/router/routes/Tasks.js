@@ -5,7 +5,7 @@ module.exports = (app, db) => {
   // GET all tasks
   app.get('/Tasks', (req, res) => {
     db.tasks.findAll({
-        attributes: ['publicator', 'publicationDate','publicationText']
+        attributes: ['publicator', 'publicationGroup', 'publicationAssignature','publicationText']
     })
       .then(tasks => {
         res.json(tasks);
@@ -17,7 +17,7 @@ module.exports = (app, db) => {
     const id = req.params.id;
     db.tasks.find({
       where: { id: id},
-      attributes: ['publicator', 'publicationDate','publicationText']
+      attributes: ['publicator', 'publicationGroup', 'publicationAssignature','publicationText']
     })
       .then(tasks => {
         res.json(tasks);
@@ -27,11 +27,13 @@ module.exports = (app, db) => {
    // POST single tasks
   app.post('/Tasks', (req, res) => {
     const publicator = req.body.publicator;
-    const publicationDate = req.body.publicationDate;
-    const publicationText = req.body.publicationText
+    const publicationGroup = req.body.publicationGroup;
+    const publicationAssignature = req.body.publicationAssignature;
+    const publicationText = req.body.publicationText;
     db.tasks.create({
       publicator:publicator,
-      publicationDate: publicationDate,
+      publicationGroup: publicationGroup,
+      publicationAssignature:publicationAssignature,
       publicationText:publicationText
     })
       .then(newTask=> {
