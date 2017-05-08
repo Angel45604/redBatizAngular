@@ -5,10 +5,13 @@ module.exports=(sequelize,DataTypes) =>{
         publicator:{
             type:DataTypes.STRING
         },
-        publicationDate:{
+        publicationAssignature:{
             type:DataTypes.DATE
         },
         publicationText:{
+            type:DataTypes.STRING
+        },
+        publicationGroup:{
             type:DataTypes.STRING
         }
     });

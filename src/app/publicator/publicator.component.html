@@ -6,11 +6,11 @@
       </md-input-container>
       <br />
       <br />
-      <!--<md-select multiple placeholder="Grupos" class="groups">
+      <md-select multiple placeholder="Grupos" class="groups">
           <md-option *ngFor="let group of groups" [value]="group.value">
               {{ group.viewValue }}
           </md-option>
-      </md-select>-->
+      </md-select>
       <input type="file" [(ngModel)]="PublicationFoto" name="PublicationFoto" (change)="fileEvent($event)" />
       <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block">Publicar</button>
       <button *ngIf="editing" type="submit" class="btn btn-warning btn-block">Editar</button>
