@@ -4,3 +4,9 @@
 .header-image{
     width: 6em;
 }
+
+@media(max-width:600px){
+  .image{
+    width: 100%;
+  }
+}
