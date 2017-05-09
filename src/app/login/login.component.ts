@@ -1,12 +1,15 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import {Menubar} from '../menubar/menubar.component';
+
 import { AuthenticationService } from '../services/authentication.service';
 import {AlertService} from '../services/alert.service'
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls:["login.component.css"]
 })
 
 export class LoginComponent implements OnInit {

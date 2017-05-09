@@ -1,0 +1,4 @@
+.text-upper{
+    display: flex;
+    transform: translateX(50px);
+}

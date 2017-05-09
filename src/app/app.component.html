@@ -21,16 +21,14 @@
       <hr>
       <div class="sidenav-data">
         <div class="element1">
-            <button md-raised-button class="text-upper">Element 1</button>
           <div *ngIf="currentUser.idRolfk>1">
-            Grupos
-            <a href="#" (click)="setPublicationContainerMode(1,'4IM7')">4IM7</a>
-            <a href="#" (click)="setPublicationContainerMode(1,'4IM8')">4IM8</a>
-            <a href="#" (click)="setPublicationContainerMode(1,'4IM9')">4IM9</a>
+            <button (click)="setPublicationContainerMode(1,'4IM7')" md-raised-button class="text-upper">4IM7</button><br>
+            <button (click)="setPublicationContainerMode(1,'4IM8')" md-raised-button class="text-upper">4IM8</button><br>
+            <button (click)="setPublicationContainerMode(1,'4IM9')" md-raised-button class="text-upper">4IM9</button><br>
           </div>
           <div *ngIf="currentUser.idRolfk==1">
-          <a href="#" (click)="setPublicationContainerMode(2,'Matematicas')">Matematicas</a>
-          <a href="#" (click)="setPublicationContainerMode(2,'Dibujo')">Dibujo</a>
+            <button (click)="setPublicationContainerMode(2,'Matematicas')" md-raised-button class="text-upper">Matemáticas</button><br>
+            <button (click)="setPublicationContainerMode(2,'Dibujo')" md-raised-button class="text-upper">Dibujo</button><br>
           </div>
         </div>
 
