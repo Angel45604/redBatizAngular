@@ -1,3 +1,30 @@
+
+var db=require('../config/dbconnection');
+
+module.exports=(sequelize,DataTypes) =>{
+    const Student = sequelize.define('Student',{
+        Boleta: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        IdUsser: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        IdGroup:{
+            type: DataTypes.STRING,
+            allowNull:false
+        }
+    });
+    return Student;
+};
+
+
+
+
+
+
 // var db=require('../dbconnection');
 // var fs = require('fs');
 // var Student={
