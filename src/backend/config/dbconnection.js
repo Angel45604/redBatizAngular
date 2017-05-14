@@ -20,7 +20,23 @@ db.sequelize = sequelize;
 db.tasks = require('../models/Task.js')(sequelize, Sequelize);
 db.roles = require('../models/Roles.js')(sequelize, Sequelize);
 db.users = require('../models/User.js')(sequelize, Sequelize);
-db.groups = require('../models/Groups')(sequelize, Sequelize);
+db.groups = require('../models/Groups.js')(sequelize, Sequelize);
+db.Cat_Academys = require('../models/Cat_Academy.js')(sequelize, Sequelize);
+db.Materiass = require('../models/Materias.js')(sequelize, Sequelize);
+db.Rel_Usser_Materias = require('../models/Rel_Usser_Materia.js')(sequelize, Sequelize);
+db.Relation_Mat_Academys = require('../models/Relation_Mat_Academy.js')(sequelize, Sequelize);
+db.Students = require('../models/Student.js')(sequelize, Sequelize);
+db.RELuser_rol = require('../models/RELuser-rol.js')(sequelize, Sequelize);
+db.Rel_Depto_Pue = require('../models/Rel_Depto_Pue.js')(sequelize, Sequelize);
+db.Rel_User_Admin = require('../models/Rel_User_Admin.js')(sequelize, Sequelize);
+db.Cat_Deptos = require('../models/Cat_Deptos.js')(sequelize, Sequelize);
+db.Cat_Puesto= require('../models/Cat_Puestos.js')(sequelize, Sequelize);
+
+
+
+
+
+
 
 db.groups.sync({force:false}).then(function(){
   return db.groups.bulkCreate([
@@ -152,10 +168,26 @@ db.roles.sync({force: false}).then(function () {
             })
 });
 
-
+//Relacion persona-rol
 db.roles.hasMany(db.users,{foreignKey:'idRolfk', sourceKey:'id'});
 db.users.belongsTo(db.roles,{foreignKey:'idRolfk', sourceKey:'id'});
-
+//Relacion Usser-Student 
+db.Students.hasone(db.users,{foreignKey:'IdUsser',sourceKey:'id'});
+//Puesto Y Departamento 
+db.Rel_Depto_Pue.hasone(db.Cat_Puesto,{foreignKey:'IdPuesto',sourceKey:'id'});
+db.Rel_Depto_Pue.hasone(db.Cat_Deptos,{foreignKey:'Iddepto',sourceKey:'id'});
+// Relacion de puesto y departamento con Usuario 
+db.Rel_User_Admin.hasone(db.Rel_Depto_Pue,{foreignKey:'IdRelation',sourceKey:'id'});
+db.Rel_User_Admin.hasone(db.users,{foreignKey:'IdUser',sourceKey:'id'});
+//Relacion Alumno Grupo, or Student with group 
+db.Students.hasone(db.groups,{foreignKey:'IdGroup',sourceKey:'id'});
+db.groups.hasMany(db.Students,{foreignKey:'IdGroup',sourceKey:'id'});
+//Relacion Usser Materia 
+db.Rel_Usser_Materias.hasMany(db.users,{foreignKey:'IdUsser',sourceKey:'id'});
+db.Rel_Usser_Materias.hasMany(db.Materiass,{foreignKey:'idMateria',sourceKey:'id'});
+// Relation Materia Academy
+db.Relation_Mat_Academys.hasMany(db.Materiass,{foreignKey:'idMateria',sourceKey:'id'});
+db.Relation_Mat_Academys.hasone(db.Cat_Academys,{foreignKey:'idAcademy',sourceKey:'id'});
 
 module.exports = db;
 // var connection=mysql.createPool({
