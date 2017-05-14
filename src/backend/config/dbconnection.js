@@ -176,7 +176,7 @@ db.Students.hasone(db.users,{foreignKey:'IdUsser',sourceKey:'id'});
 //Puesto Y Departamento 
 db.Rel_Depto_Pue.hasone(db.Cat_Puesto,{foreignKey:'IdPuesto',sourceKey:'id'});
 db.Rel_Depto_Pue.hasone(db.Cat_Deptos,{foreignKey:'Iddepto',sourceKey:'id'});
-// Relacion de puesto y departamento con Usuario 
+// Relacion de ppuesto y departamento con Usuario 
 db.Rel_User_Admin.hasone(db.Rel_Depto_Pue,{foreignKey:'IdRelation',sourceKey:'id'});
 db.Rel_User_Admin.hasone(db.users,{foreignKey:'IdUser',sourceKey:'id'});
 //Relacion Alumno Grupo, or Student with group 
