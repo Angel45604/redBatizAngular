@@ -2,11 +2,11 @@ var db=require('../config/dbconnection');
 
 module.exports=(sequelize,DataTypes) =>{
     const RelationUsserMateria = sequelize.define('RelationUsserMateria',{
-        IdMateria:{
+        idMateria:{
             type:DataTypes.STRING,
             allowNull:false
         },
-        IdUsser:{
+        idUsser:{
             type:DataTypes.STRING,
             allowNull:false
         }

@@ -2,11 +2,11 @@ var db=require('../config/dbconnection');
 
 module.exports=(sequelize,DataTypes) =>{
     const Rel_Mat_Academy = sequelize.define('Rel_Mat_Academy',{
-        IdMateria:{
+        idMateria:{
             type:DataTypes.STRING,
             allowNull:false
         },
-         IdAcademy:{
+         idAcademy:{
             type:DataTypes.STRING,
             allowNull:false
         }
