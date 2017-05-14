@@ -8,14 +8,10 @@ module.exports=(sequelize,DataTypes) =>{
             allowNull: false,
             unique: true
         },
-        IdUsser: {
+        IdUser: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        IdGroup:{
-            type: DataTypes.STRING,
-            allowNull:false
-        }
     });
     return Student;
 };

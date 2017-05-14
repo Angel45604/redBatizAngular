@@ -2,11 +2,11 @@ var db=require('../config/dbconnection');
 
 module.exports=(sequelize,DataTypes) =>{
     const  Rel_Depto_Pue = sequelize.define('Rel_Depto_Pue',{
-        Iddepto:{
+        idDepto:{
             type:DataTypes.STRING,
             allowNull:false
         },
-        IdPuesto:{
+        idPuesto:{
             type:DataTypes.STRING,
             allowNull:false
         }
