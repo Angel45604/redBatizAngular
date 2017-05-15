@@ -31,6 +31,7 @@ db.Rel_Depto_Pue = require('../models/Rel_Depto_Pue.js')(sequelize, Sequelize);
 db.Rel_User_Admin = require('../models/Rel_User_Admin.js')(sequelize, Sequelize);
 db.Cat_Deptos = require('../models/Cat_Depto.js')(sequelize, Sequelize);
 db.Cat_Puesto= require('../models/Cat_Puestos.js')(sequelize, Sequelize);
+db.Teacher= require('../models/Teacher.js')(sequelize, Sequelize);
 
 
 
@@ -167,6 +168,10 @@ db.roles.sync({force: false}).then(function () {
               console.log(roles)
             })
 });
+//Relation Teacher group
+db.Teacher.belongsTo(db.groups,{foreignKey:'Gruposprof', sourceKey:'id'});
+db.Teacher.belongsTo(db.users,{foreignKey:'Idpersona', sourceKey:'id'});
+
 
 //Relacion persona-rol
 db.roles.hasMany(db.users,{foreignKey:'idRolfk', sourceKey:'id'});
@@ -174,16 +179,9 @@ db.users.belongsTo(db.roles,{foreignKey:'idRolfk', sourceKey:'id'});
 
 //Relacion Usser-Student 
 db.Students.hasOne(db.users,{foreignKey:'idUser',sourceKey:'id'});
-db.users.belongsTo(db.Students,{foreignKey:'idUser',sourceKey:'id'});
+db.Students.belongsTo(db.users,{foreignKey:'idUser',sourceKey:'id'});
 
 //Puesto Y Departamento 
-<<<<<<< HEAD
-db.Rel_Depto_Pue.hasone(db.Cat_Puesto,{foreignKey:'IdPuesto',sourceKey:'id'});
-db.Rel_Depto_Pue.hasone(db.Cat_Deptos,{foreignKey:'Iddepto',sourceKey:'id'});
-// Relacion de ppuesto y departamento con Usuario 
-db.Rel_User_Admin.hasone(db.Rel_Depto_Pue,{foreignKey:'IdRelation',sourceKey:'id'});
-db.Rel_User_Admin.hasone(db.users,{foreignKey:'IdUser',sourceKey:'id'});
-=======
 db.Rel_Depto_Pue.hasOne(db.Cat_Puesto,{foreignKey:'idPuesto',sourceKey:'id'});
 db.Cat_Puesto.belongsTo(db.Rel_Depto_Pue,{foreignKey:'idPuesto',sourceKey:'id'});
 
@@ -197,7 +195,6 @@ db.Rel_Depto_Pue.belongsTo(db.Rel_User_Admin,{foreignKey:'idRelation',sourceKey:
 db.Rel_User_Admin.hasOne(db.users,{foreignKey:'idUser',sourceKey:'id'});
 db.users.belongsTo(db.Rel_User_Admin,{foreignKey:'idUser',sourceKey:'id'});
 
->>>>>>> 6884d179cee7e8b60a53a40bafa02d7f690157e2
 //Relacion Alumno Grupo, or Student with group 
 db.groups.hasMany(db.Students,{foreignKey:'idGroup',sourceKey:'id'});
 db.Students.belongsTo(db.groups,{foreignKey:'idGroup',sourceKey:'id'});

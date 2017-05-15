@@ -7,11 +7,7 @@ module.exports=(sequelize,DataTypes) =>{
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
-        },
-        IdUser: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+        }
     });
     return Student;
 };

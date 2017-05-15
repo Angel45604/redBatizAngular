@@ -2,13 +2,19 @@ var db=require('../config/dbconnection');
 
 module.exports=(sequelize,DataTypes) =>{
     const  Rel_Depto_Pue = sequelize.define('Rel_Depto_Pue',{
-        idDepto:{
+       iddepto:{
             type:DataTypes.STRING,
-            allowNull:false
+            references:{
+                model:"Cat_Depto",
+                key:"id"
+            }
         },
-        idPuesto:{
+         idPuesto:{
             type:DataTypes.STRING,
-            allowNull:false
+            references:{
+                model:"Cat_Puestos",
+                key:"id"
+            }
         }
     });
     return Rel_Depto_Pue;
