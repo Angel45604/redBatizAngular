@@ -4,11 +4,17 @@ module.exports=(sequelize,DataTypes) =>{
     const Rel_Mat_Academy = sequelize.define('Rel_Mat_Academy',{
         idMateria:{
             type:DataTypes.STRING,
-            allowNull:false
+             references:{
+                model:"Materias",
+                key:"id"
+            }
         },
          idAcademy:{
             type:DataTypes.STRING,
-            allowNull:false
+             references:{
+                model:"Cat_Academy",
+                key:"id"
+            }
         }
 
     });

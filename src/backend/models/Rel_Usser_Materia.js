@@ -4,11 +4,17 @@ module.exports=(sequelize,DataTypes) =>{
     const Rel_Usser_Materia = sequelize.define('Rel_Usser_Materia',{
         idMateria:{
             type:DataTypes.STRING,
-            allowNull:false
+             references:{
+                model:"Materias",
+                key:"id"
+            }
         },
          idUser:{
             type:DataTypes.STRING,
-            allowNull:false
+             references:{
+                model:"User",
+                key:"id"
+            }
         }
 
     });

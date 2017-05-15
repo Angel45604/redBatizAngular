@@ -4,11 +4,17 @@ module.exports=(sequelize,DataTypes) =>{
     const RelationUsserMateria = sequelize.define('RelationUsserMateria',{
       idMateria:{
             type:DataTypes.STRING,
-            allowNull:false
+            references:{
+                model:"Materias",
+                key:"id"
+            }
         },
          idUser:{
             type:DataTypes.STRING,
-            allowNull:false
+             references:{
+                model:"User",
+                key:"id"
+            }
         }
     });
     return RelationUsserMateria;
