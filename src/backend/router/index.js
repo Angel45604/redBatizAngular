@@ -2,6 +2,7 @@
 
 const routes = [
   require('./routes/Tasks'),
+  require('./routes/FileUpload'),
 ];
 
 
