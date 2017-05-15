@@ -1,7 +1,7 @@
 ﻿import { Component, EventEmitter, Input, OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
-
+import { Http } from '@angular/http';
 import{ User } from '../models/user';
 import { CommentService } from '../services/publishCard.service';
 import { EmitterService } from '../services/emmiter.service';
@@ -16,9 +16,10 @@ import { PublicationCard } from '../publication-card/Model/publication-card';
 export class Publicator{
     currentUser:User;
     publicationText: string;
-    publicationFoto: File;
+    filesToUpload: Array<File> = [];
   constructor(
     private commentService:CommentService,
+    private http: Http
   ){
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
@@ -68,10 +69,20 @@ assignatures=[
   
 
 
-  fileEvent(fileInput: any){
-    let file = fileInput.target.files[0];
-    let fileName = file.name;
-    console.log(fileName);
-    console.log(file);
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
   }
+
+  upload() {
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+
+    formData.append("uploads[]", files[0], files[0]['name']);
+    
+    this.http.post('http://localhost:3000/upload', formData)
+      .map(files => files.json())
+      .subscribe(files => console.log('files', files))
+  }
+
+
 }

@@ -16,8 +16,13 @@
           {{assignature.viewValue}}
         </md-option>
       </md-select>
+<<<<<<< HEAD
       <input type="file" [(ngModel)]="PublicationFoto" name="PublicationFoto" (change)="fileEvent($event)" />
       <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block">Publicar</button>
+=======
+      <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+      <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block" (click)="upload()">Publicar</button>
+>>>>>>> 3887865cbeb4200a64c3121168151a8c97006eb9
       <button *ngIf="editing" type="submit" class="btn btn-warning btn-block">Editar</button>
     </div>
   </form>
