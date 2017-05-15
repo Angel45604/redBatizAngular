@@ -16,7 +16,7 @@
           {{assignature.viewValue}}
         </md-option>
       </md-select>
-      <!--<input type="file" [(ngModel)]="PublicationFoto" name="PublicationFoto" (change)="fileEvent($event)" />-->
+      <input type="file" [(ngModel)]="PublicationFoto" name="PublicationFoto" (change)="fileEvent($event)" />
       <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block">Publicar</button>
       <button *ngIf="editing" type="submit" class="btn btn-warning btn-block">Editar</button>
     </div>
