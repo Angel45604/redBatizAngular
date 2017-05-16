@@ -168,9 +168,9 @@ db.roles.sync({force: true}).then(function () {
               console.log(roles)
             })
 });
-//Relation Teacher group
-db.Teacher.belongsTo(db.groups,{foreignKey:'Gruposprof', sourceKey:'id'});
-db.Teacher.belongsTo(db.users,{foreignKey:'Idpersona', sourceKey:'id'});
+// //Relation Teacher group
+// db.Teacher.belongsTo(db.groups,{foreignKey:'Gruposprof', sourceKey:'id'});
+// db.Teacher.belongsTo(db.users,{foreignKey:'Idpersona', sourceKey:'id'});
 
 
 //Relacion persona-rol

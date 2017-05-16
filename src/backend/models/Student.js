@@ -11,10 +11,10 @@ module.exports=(sequelize,DataTypes) =>{
         },
         idUsser:{
             type:DataTypes.STRING,
-            references:{
-                model:"User",
-                key:"id"
-            }
+            // references:{
+            //     model:"User",
+            //     key:"id"
+            // }
         }
     });
     return Student;
