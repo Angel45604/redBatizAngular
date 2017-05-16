@@ -10,22 +10,43 @@ module.exports = (app, db) => {
 
 
     
-  // GET all Materias
-  app.get('/Cat_Academy', (req, res) => {
-    db.Cat_Academy.findAll({
-        attributes: ['Academy']
+  // Trae todos los alumnos de un grupo
+  app.get('/User', (req, res) => {
+    const group = req.params.group;
+    db.Students.find({
+        where: { group:group},
+        attributes: ['name'],
+        include:[{
+          model:Students,
+          where:{
+            iduser:sequelize.col(Users.iduser)
+          },
+                    include:[{
+                    model:groups,
+                    where:{
+                    group:sequelize.col(Students.group)
+                  }
+
+
+                }]
+                
+
+        }]
     })
-      .then(Cat_Academy => {
-        res.json(Cat_Academy);
+      .then(Students => {
+        res.json(Students);
       });
   });
 
-  // GET Depto by id
-  app.get('/Cat_Academy/:id', (req, res) => {
+  // Alumnos de un grupo
+  app.get('/Users/:id', (req, res) => {
     const id = req.params.id;
-    db.Cat_Academy.find({
-      where: { id: id},
-      attributes: ['Academy']
+    const name=req.params.name;
+    const group= req.params.group;
+  
+    db.Users.find({
+      where: { group:group},
+      attributes: ['name','surname','group']
     })
       .then(Cat_Academy => {
         res.json(Cat_Academy);
