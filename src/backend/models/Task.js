@@ -13,6 +13,10 @@ module.exports=(sequelize,DataTypes) =>{
         },
         publicationText:{
             type: DataTypes.STRING
+        },
+        publicationFile:{
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     });
     return Task;

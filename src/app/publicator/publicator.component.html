@@ -17,7 +17,7 @@
         </md-option>
       </md-select>
       <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
-      <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block" (click)="upload()">Publicar</button>
+      <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block">Publicar</button>
       <button *ngIf="editing" type="submit" class="btn btn-warning btn-block">Editar</button>
     </div>
   </form>

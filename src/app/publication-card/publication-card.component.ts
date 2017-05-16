@@ -20,5 +20,6 @@ export class PublicationCard{
     @Input() publicationGroup: string;
     @Input() publicationAssignature: string;
     @Input() publicationText:string;
+    @Input() publicationFile:string;
     @Input() accessLevel:number;
 }

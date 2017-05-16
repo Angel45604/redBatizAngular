@@ -4,7 +4,7 @@ module.exports = (app,db) =>{
     var multer = require('multer');
     var path = require('path');
     const express = require('express');
-    app.use(express.static(path.join(__dirname, 'uploads')));
+    app.use(express.static(path.join(__dirname, 'images')));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -15,7 +15,7 @@ app.use(function (req, res, next) {
 var storage = multer.diskStorage({
   // destino del fichero
   destination: function (req, file, cb) {
-    cb(null, './uploads/')
+    cb(null, '../assets/images/')
   },
   // renombrar fichero
   filename: function (req, file, cb) {

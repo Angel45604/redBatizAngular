@@ -17,6 +17,8 @@ export class Publicator{
     currentUser:User;
     publicationText: string;
     filesToUpload: Array<File> = [];
+    fileName:string;
+    destinationFolder:string = "../assets/images/"
   constructor(
     private commentService:CommentService,
     private http: Http
@@ -49,7 +51,15 @@ assignatures=[
   submitPublication(){
     console.log(this.selectedAssignature,this.selectedGroup);
       let commentOperation: Observable<Comment[]>;
-    this.publication = new PublicationCard(this.currentUser.name,""+this.selectedGroup,""+this.selectedAssignature, this.publicationText);
+      const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+
+    formData.append("uploads[]", files[0], files[0]['name']);
+    
+    this.http.post('http://localhost:3000/upload', formData)
+      .map(files => files.json(), this.fileName=files[0].name)
+      .subscribe(files => console.log(this.fileName))
+    this.publication = new PublicationCard(this.currentUser.name,""+this.selectedGroup,""+this.selectedAssignature, this.publicationText, this.destinationFolder+this.fileName);
     if(!this.editing){
       commentOperation = this.commentService.addComment(this.publication);
     }else{
@@ -59,7 +69,7 @@ assignatures=[
     commentOperation.subscribe(
       comments => {
         EmitterService.get(this.listId).emit(comments);
-        this.publication = new PublicationCard('','','','');
+        this.publication = new PublicationCard('','','','','');
         if(this.editing)this.editing = !this.editing;
       },
       err =>{
@@ -81,7 +91,7 @@ assignatures=[
     
     this.http.post('http://localhost:3000/upload', formData)
       .map(files => files.json())
-      .subscribe(files => console.log('files', files))
+      .subscribe(files => this.fileName=files[0].filename)
   }
 
 
