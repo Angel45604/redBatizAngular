@@ -2,11 +2,13 @@
 
 const routes = [
   require('./routes/Tasks'),
+
    require('./routes/Academies'),
     require('./routes/Cat_Deptos'),
      require('./routes/Cat_Puesto'),
-      require('./routes/Materia')
- 
+      require('./routes/Materia'),
+      require('./routes/FileUpload')
+
 ];
 
 

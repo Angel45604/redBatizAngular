@@ -181,9 +181,6 @@ app.get('/logout', function(req, res, next) {
   });
 });
 
-app.get('/private', function(req, res) {
-  return res.send("<html><head><title>Private</title></head><body>\n<h1>Hola " + req.session.user + "</h1>\n<p>...</p>\n<a href=\"/logout\">Logout</a>\n</body></html>");
-});
 
 module.exports = function(done) {
   return DB.sequelize.sync({
