@@ -3,6 +3,7 @@
         public publicator: string, 
         public publicationGroup: string,
         public publicationAssignature:string,
-        public publicationText:string
+        public publicationText:string,
+        public publicationFile:string
         ){}
 }

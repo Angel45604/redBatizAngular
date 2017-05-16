@@ -39,7 +39,7 @@ db.Teacher= require('../models/Teacher.js')(sequelize, Sequelize);
 
 
 
-db.groups.sync({force:false}).then(function(){
+db.groups.sync({force:true}).then(function(){
   return db.groups.bulkCreate([
     {group:'1IM1'},
     {group:'1IM2'},
@@ -156,7 +156,7 @@ db.groups.sync({force:false}).then(function(){
   })
 });
 
-db.roles.sync({force: false}).then(function () {
+db.roles.sync({force: true}).then(function () {
   // Table created
   return db.roles.bulkCreate([
           { roleDescription: 'student'},
