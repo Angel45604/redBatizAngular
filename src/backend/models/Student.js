@@ -1,6 +1,7 @@
 
 var db=require('../config/dbconnection');
 
+
 module.exports=(sequelize,DataTypes) =>{
     const Student = sequelize.define('Student',{
         Boleta: {
