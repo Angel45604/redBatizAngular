@@ -209,7 +209,6 @@ db.Materias.belongsTo(db.Rel_User_Materias,{foreignKey:'idMateria',sourceKey:'id
 // Relation Materia Academy
 db.Relation_Mat_Academies.hasMany(db.Materias,{foreignKey:'idMateria',sourceKey:'id'});
 db.Materias.belongsTo(db.Relation_Mat_Academies,{foreignKey:'idMateria',sourceKey:'id'});
-
 db.Relation_Mat_Academies.hasOne(db.Cat_Academies,{foreignKey:'idAcademy',sourceKey:'id'});
 db.Cat_Academies.belongsTo(db.Relation_Mat_Academies,{foreignKey:'idAcademy',sourceKey:'id'});
 */

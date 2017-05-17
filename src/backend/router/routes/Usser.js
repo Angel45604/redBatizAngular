@@ -49,4 +49,42 @@ module.exports = (app, db) => {
       });
   });
 
+//Intento de Select 
+db.Users.findAll({
+        attributes: ['name', 'ussername'],
+        required:true,
+        include: [
+            {
+                model: db.Students,
+                attributes: ['boleta'],
+                required:true,
+
+                include: [
+                    {
+                        model: db.groups,
+                        attributes: ['grupo'],
+                        required:true,
+                        
+                            
+
+                                where: {
+                                    $and: [
+                                        db.Sequelize.literal("groups.group=4im8"),
+                                        
+
+                                    ]
+                                }
+                    }
+                ]
+            }
+        ]
+    }).then(function(state){
+
+     console.log(state);
+
+    });
+
+
+
+
 };

@@ -8,14 +8,14 @@ module.exports=(sequelize,DataTypes) =>{
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
-        },
-        idUsser:{
-            type:DataTypes.STRING,
+        }
+       // idUsser:{
+      //  type:DataTypes.STRING,
             // references:{
             //     model:"User",
             //     key:"id"
             // }
-        }
+        //}
     });
     return Student;
 };
