@@ -36,10 +36,11 @@ module.exports = (app, db) => {
   //       res.json(Students);
   //     });
   // });
-db.groups.hasOne(db.Students,{foreignKey:'idgroup',sourceKey:'id'});
-db.Students.belongsTo(db.groups,{foreignKey:'idgroup',sourceKey:'id'});
-db.Students.belongsTo(db.Users,{foreignKey:'idhijodetuputamadre',sourceKey:'id'});
-db.Users.hasOne(db.Students,{foreignKey:'idhijodetuputamadre',sourceKey:'id'});
+db.groups.hasOne(db.Students,{foreignKey:'groupfk',sourceKey:'id'});
+db.Students.belongsTo(db.groups,{foreignKey:'groupfk',sourceKey:'id'});
+db.Users.hasOne(db.Students,{foreignKey:'iduserfk',sourceKey:'id'});
+db.Students.belongsTo(db.Users,{foreignKey:'iduserfk',sourceKey:'id'});
+
 
   // Alumnos de un grupo
   app.get('/User/:group', (req, res) => {
