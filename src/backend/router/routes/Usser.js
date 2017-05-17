@@ -91,5 +91,29 @@ db.Users.findAll({
 
 
 
+//Opciones 
+sequelize.query(" Select Users.surname,Users.name,Students.Boleta,groups.group"+
+" from Students inner join Users on Students.iduserfk=Users.id inner join groupson "
++"groups.id=Students.groupfk where groups.group='4IM8';", { type: sequelize.QueryTypes.SELECT})
+  .then(Users => {
+    res.json(Users);
+  });
+
+  sequelize.query("select Users.name, groups.group, teacher.idgroup from" 
++"Teacher inner join Users on Teacher.iduserfk=Users.id inner join groups"
++"on groups.id=teacher.groupfk  where" 
++"Users.name='Maestro'; ", { type: sequelize.QueryTypes.SELECT})
+  .then(Users => {
+    res.json(Users);
+  });
+
+ sequelize.query("Select Users.name, groups.group, Students.Boleta from Users"
++"inner join teacher on teacher.idUserfk=Users.id inner join groups.group"
++"on groups.group=teacher.groupfk inner join Students on Students.idgroup=groups.id"
++"where teacher.id='1' and groups.group='4im8'; ", { type: sequelize.QueryTypes.SELECT})
+  .then(Users => {
+    res.json(Users);
+  });
+
 
 };
