@@ -176,7 +176,7 @@ db.roles.sync({force: true}).then(function () {
 //Relacion persona-rol
 db.roles.hasMany(db.users,{foreignKey:'idRolfk', sourceKey:'id'});
 db.users.belongsTo(db.roles,{foreignKey:'idRolfk', sourceKey:'id'});
-
+/*
 //Relacion Usser-Student 
 db.Students.hasOne(db.users,{foreignKey:'idUser',sourceKey:'id'});
 db.Students.belongsTo(db.users,{foreignKey:'idUser',sourceKey:'id'});
@@ -212,7 +212,7 @@ db.Materias.belongsTo(db.Relation_Mat_Academies,{foreignKey:'idMateria',sourceKe
 
 db.Relation_Mat_Academies.hasOne(db.Cat_Academies,{foreignKey:'idAcademy',sourceKey:'id'});
 db.Cat_Academies.belongsTo(db.Relation_Mat_Academies,{foreignKey:'idAcademy',sourceKey:'id'});
-
+*/
 module.exports = db;
 // var connection=mysql.createPool({
 
