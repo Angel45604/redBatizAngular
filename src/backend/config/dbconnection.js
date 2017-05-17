@@ -176,11 +176,13 @@ db.roles.sync({force: true}).then(function () {
 //Relacion persona-rol
 db.roles.hasMany(db.users,{foreignKey:'idRolfk', sourceKey:'id'});
 db.users.belongsTo(db.roles,{foreignKey:'idRolfk', sourceKey:'id'});
-/*
-//Relacion Usser-Student 
-db.Students.hasOne(db.users,{foreignKey:'idUser',sourceKey:'id'});
-db.Students.belongsTo(db.users,{foreignKey:'idUser',sourceKey:'id'});
 
+//Relacion Usser-Student 
+//User.hasMany(Post, {foreignKey: 'user_id'})
+//db.users.belongsTo(db.Students, {foreignKey: 'user_id'})
+//db.groups.hasOne(db.Students,{foreignKey:'idUser',sourceKey:'id'});
+//db.Students.belongsTo(db.groups,{foreignKey:'idUser',sourceKey:'id'});
+/*
 //Puesto Y Departamento 
 db.Rel_Depto_Pue.hasOne(db.Cat_Puesto,{foreignKey:'idPuesto',sourceKey:'id'});
 db.Cat_Puesto.belongsTo(db.Rel_Depto_Pue,{foreignKey:'idPuesto',sourceKey:'id'});

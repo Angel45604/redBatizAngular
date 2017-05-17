@@ -1,7 +1,7 @@
 ﻿var db=require('../config/dbconnection');
 
 module.exports=(sequelize,DataTypes) =>{
-    const User = sequelize.define('user',{
+    const User = sequelize.define('User',{
         username: {
             type: DataTypes.STRING,
             allowNull: false,

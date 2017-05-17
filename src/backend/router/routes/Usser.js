@@ -36,6 +36,10 @@ module.exports = (app, db) => {
   //       res.json(Students);
   //     });
   // });
+db.groups.hasOne(db.Students,{foreignKey:'idgroup',sourceKey:'id'});
+db.Students.belongsTo(db.groups,{foreignKey:'idgroup',sourceKey:'id'});
+db.Students.belongsTo(db.Users,{foreignKey:'idhijodetuputamadre',sourceKey:'id'});
+db.Users.hasOne(db.Students,{foreignKey:'idhijodetuputamadre',sourceKey:'id'});
 
   // Alumnos de un grupo
   app.get('/User/:group', (req, res) => {
@@ -49,9 +53,9 @@ module.exports = (app, db) => {
       });
   });
 
-//Intento de Select 
+//Trae todos los alumnos de un solo grupo 
 db.Users.findAll({
-        attributes: ['name', 'ussername'],
+        attributes: ['name', 'username'],
         required:true,
         include: [
             {
