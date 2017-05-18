@@ -18,20 +18,32 @@ module.exports = (app, db) => {
       });
   });*/
 
+// Obtener a todos alv 
+  app.get('/Usuarios', (req, res) => {
+    db.Usuarios.findAll({
+        attributes: ['Jefeacademianame', 'jefeacademiaap',
+         'jefeacademiaam','maestroname', 'maestroap',
+         'maestroam','alumnoname','alumnoap','alumnoam','grupo']
+    })
+      .then(Usuarios => {
+        res.json(Usuarios);
+      });
+  });
+
 //Obtener todos los grupos de un profesor
-app.get('/Usuarios/:maestroname/:maestroap/:maestroam', (req, res) => {
+app.get('/Usuarios/grupos/:maestroname/:maestroap/:maestroam', (req, res) => {
      const maestroname= req.params.maestroname;
      const maestroap= req.params.maestroap;
      const maestroam= req.params.maestroam;
-     db.Usuarios.find({
+     db.Usuarios.findAll({
       where: { 
         maestroname:maestroname,
         maestroam:maestroam,
         maestroap:maestroap
 
       },
-      attributes: [
-        [sequelize.fn('DISTINTIC', sequelize.col('grupo'))]]
+      attributes:['grupo'],
+      group: ['grupo']
     })
       .then(Usuarios=> {
         res.json(Usuarios);
@@ -39,14 +51,16 @@ app.get('/Usuarios/:maestroname/:maestroap/:maestroam', (req, res) => {
   });
 
 //obtener todos los alumnos del grupo de un profesor
-app.get('/Usuarios/:group/:maestroname/:maestroap/:maestroam', (req, res) => {
-    const group= req.params.group;
+
+
+app.get('/Usuarios/alumnos/:grupo/:maestroname/:maestroap/:maestroam', (req, res) => {
+    const grupo= req.params.grupo;
      const maestroname= req.params.maestroname;
      const maestroap= req.params.maestroap;
      const maestroam= req.params.maestroam;
-     db.Usuarios.find({
+     db.Usuarios.findAll({
       where: { 
-        group:group,
+        grupo:grupo,
         maestroname:maestroname,
         maestroam:maestroam,
         maestroap:maestroap
@@ -60,24 +74,22 @@ app.get('/Usuarios/:group/:maestroname/:maestroap/:maestroam', (req, res) => {
   });
 
 //Obtener todos los profesores de un jefe de academia
-app.get('/Usuarios/:group/:jefeacademianame/:jefeacademiaap/:jefeacademiaam', (req, res) => {
-      const group= req.params.group;    
+app.get('/Usuarios/maestros/:jefeacademianame/:jefeacademiaap/:jefeacademiaam', (req, res) => {
      const jefeacademianame= req.params.jefeacademianame;
      const jefeacademiaap= req.params.jefeacademiaap;
      const jefeacademiaam= req.params.jefeacademiaam;
-     db.Usuarios.find({
+     db.Usuarios.findAll({
       where: { 
-        group:group,
         jefeacademianame:jefeacademianame,
         jefeacademiaam:jefeacademiaam,
         jefeacademiaap:jefeacademiaap
 
       },
       attributes: [
-        [sequelize.fn('DISTINTIC', sequelize.col('maestroname'))],
-        [sequelize.fn('DISTINTIC', sequelize.col('maestroap'))],
-        [sequelize.fn('DISTINTIC', sequelize.col('maestroam'))]
-        ]
+       'maestroname','maestroap','maestroam'
+        ],
+        group:'maestroname'
+      
     })
       .then(Usuarios=> {
         res.json(Usuarios);

@@ -180,7 +180,9 @@ db.Usuario.sync({force: true}).then(function () {
           {jefeacademianame:'Bernardo',jefeacademiaap:'Luna',jefeacademiaam:'Montiel',maestroname:'Pedro',maestroap:'Martinez',maestroam:'Silva',
           alumnoname:'Alan',alumnoap:'Yoltic',alumnoam:'Hernandez', grupo:'4iv4'},
           {jefeacademianame:'Bernardo',jefeacademiaap:'Luna',jefeacademiaam:'Montiel',maestroname:'Fabiola',maestroap:'Altamirano',maestroam:'Tano',
-          alumnoname:'Sebastian',alumnoap:'Perez',alumnoam:'Hernandez', grupo:'4im9'}
+          alumnoname:'Sebastian',alumnoap:'Perez',alumnoam:'Hernandez', grupo:'4im9'},
+          {jefeacademianame:'yo',jefeacademiaap:'yop',jefeacademiaam:'yom',maestroname:'Almita',maestroap:'Gutierrez',maestroam:'Jimenez',
+          alumnoname:'Yoalumno',alumnoap:'Yoalumnop',alumnoam:'Yoalumnom', grupo:'4im9'}
           ]).then(function() {
             return db.Usuario.findAll();
             }).then(function(Usuario) {
