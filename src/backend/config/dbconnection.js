@@ -17,6 +17,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 //Models/tables
+db.Usuario = require('../models/Usuario.js')(sequelize, Sequelize);
 db.tasks = require('../models/Task.js')(sequelize, Sequelize);
 db.roles = require('../models/Roles.js')(sequelize, Sequelize);
 db.users = require('../models/User.js')(sequelize, Sequelize);
@@ -166,6 +167,24 @@ db.roles.sync({force: true}).then(function () {
             return db.roles.findAll();
             }).then(function(roles) {
               console.log(roles)
+            })
+});
+
+db.Usuario.sync({force: true}).then(function () {
+  // Table created
+  return db.Usuario.bulkCreate([
+          {jefeacademianame:'Pablo',jefeacademiaap:'Perez',jefeacademiaam:'Torres',maestroname:'Almita',maestroap:'Gutierrez',maestroam:'Jimenez',
+          alumnoname:'Brayan',alumnoap:'Bueno',alumnoam:'Rosas', grupo:'4im8'},
+          {jefeacademianame:'Pablo',jefeacademiaap:'Perez',jefeacademiaam:'Torres',maestroname:'Almita',maestroap:'Gutierrez',maestroam:'Jimenez',
+          alumnoname:'Angel',alumnoap:'Marcos',alumnoam:'Montes', grupo:'4im8'},
+          {jefeacademianame:'Bernardo',jefeacademiaap:'Luna',jefeacademiaam:'Montiel',maestroname:'Pedro',maestroap:'Martinez',maestroam:'Silva',
+          alumnoname:'Alan',alumnoap:'Yoltic',alumnoam:'Hernandez', grupo:'4iv4'},
+          {jefeacademianame:'Bernardo',jefeacademiaap:'Luna',jefeacademiaam:'Montiel',maestroname:'Fabiola',maestroap:'Altamirano',maestroam:'Tano',
+          alumnoname:'Sebastian',alumnoap:'Perez',alumnoam:'Hernandez', grupo:'4im9'}
+          ]).then(function() {
+            return db.Usuario.findAll();
+            }).then(function(Usuario) {
+              console.log(Usuario)
             })
 });
 
