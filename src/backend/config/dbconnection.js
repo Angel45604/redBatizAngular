@@ -168,52 +168,13 @@ db.roles.sync({force: true}).then(function () {
               console.log(roles)
             })
 });
-// //Relation Teacher group
-// db.Teacher.belongsTo(db.groups,{foreignKey:'Gruposprof', sourceKey:'id'});
-// db.Teacher.belongsTo(db.users,{foreignKey:'Idpersona', sourceKey:'id'});
-//oli
+
 
 //Relacion persona-rol
 db.roles.hasMany(db.users,{foreignKey:'idRolfk', sourceKey:'id'});
 db.users.belongsTo(db.roles,{foreignKey:'idRolfk', sourceKey:'id'});
 
-//Relacion Usser-Student 
-//User.hasMany(Post, {foreignKey: 'user_id'})
-//db.users.belongsTo(db.Students, {foreignKey: 'user_id'})
-//db.groups.hasOne(db.Students,{foreignKey:'idUser',sourceKey:'id'});
-//db.Students.belongsTo(db.groups,{foreignKey:'idUser',sourceKey:'id'});
-/*
-//Puesto Y Departamento 
-db.Rel_Depto_Pue.hasOne(db.Cat_Puesto,{foreignKey:'idPuesto',sourceKey:'id'});
-db.Cat_Puesto.belongsTo(db.Rel_Depto_Pue,{foreignKey:'idPuesto',sourceKey:'id'});
 
-db.Rel_Depto_Pue.hasOne(db.Cat_Deptos,{foreignKey:'idDepto',sourceKey:'id'});
-db.Cat_Deptos.belongsTo(db.Rel_Depto_Pue,{foreignKey:'idDepto',sourceKey:'id'});
-
-// Relacion de puesto y departamento con Usuario 
-db.Rel_User_Admin.hasOne(db.Rel_Depto_Pue,{foreignKey:'idRelation',sourceKey:'id'});
-db.Rel_Depto_Pue.belongsTo(db.Rel_User_Admin,{foreignKey:'idRelation',sourceKey:'id'});
-
-db.Rel_User_Admin.hasOne(db.users,{foreignKey:'idUser',sourceKey:'id'});
-db.users.belongsTo(db.Rel_User_Admin,{foreignKey:'idUser',sourceKey:'id'});
-
-//Relacion Alumno Grupo, or Student with group 
-db.groups.hasMany(db.Students,{foreignKey:'idGroup',sourceKey:'id'});
-db.Students.belongsTo(db.groups,{foreignKey:'idGroup',sourceKey:'id'});
-
-//Relacion Usser Materia 
-db.Rel_User_Materias.hasMany(db.users,{foreignKey:'idUser',sourceKey:'id'});
-db.users.belongsTo(db.Rel_User_Materias,{foreignKey:'idUser',sourceKey:'id'});
-
-db.Rel_User_Materias.hasMany(db.Materias,{foreignKey:'idMateria',sourceKey:'id'});
-db.Materias.belongsTo(db.Rel_User_Materias,{foreignKey:'idMateria',sourceKey:'id'});
-
-// Relation Materia Academy
-db.Relation_Mat_Academies.hasMany(db.Materias,{foreignKey:'idMateria',sourceKey:'id'});
-db.Materias.belongsTo(db.Relation_Mat_Academies,{foreignKey:'idMateria',sourceKey:'id'});
-db.Relation_Mat_Academies.hasOne(db.Cat_Academies,{foreignKey:'idAcademy',sourceKey:'id'});
-db.Cat_Academies.belongsTo(db.Relation_Mat_Academies,{foreignKey:'idAcademy',sourceKey:'id'});
-*/
 module.exports = db;
 // var connection=mysql.createPool({
 
