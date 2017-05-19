@@ -1,20 +1,38 @@
-<menubar-component></menubar-component>
-<br>
-<br>
-<br>
-<br>
-<form (ngSubmit)="logino()">
-
-    <div layout="row" layout-margin>
-    <md-input-container flex>
-      <input required type="text" mdInput placeholder="Login" name="username" [(ngModel)]="username" class="form-control" mdInput />
-    </md-input-container>
-  </div>
-
-  <div layout="row" layout-margin>
-    <md-input-container flex>
-      <input required type="password" mdInput placeholder="Password" name="password" [(ngModel)]="password" class="form-control" mdInput />
-    </md-input-container>
-  </div>
-  <button md-raised-button class="text-upper" type="submit">Login</button>
-  </form>
+<section id="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col s10 push-s1">
+          <div class="row">
+            <div class="col m5 hide-on-small-only">
+              <img class="iphone" src="../../assets/images/image.png" />
+            </div>
+            <div class="col s12 m7">
+              <div class="row">
+                <div class="signup-box">
+                  <h1 class="redBatiz">RedBatiz</h1>
+                  <form class="signup-form" (ngSubmit)="logino()">
+                    <h2>Inicia sesión para acceder al sitio</h2>
+                    <div class="divider"></div>
+                    <div class="section">
+                      <input required type="text" name="username" placeholder="Usuario" [(ngModel)]="username" class="form-control" mdInput  />
+                      <input required type="password" name="password" placeholder="Contraseña" [(ngModel)]="password" class="form-control" mdInput />
+                      <button class="btn waves-effect waves-light btn-signup" type="submit">Inicia Sesión</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 l3 push-l6 center-align">
+          © 2017 GearSoft
+        </div>
+      </div>
+    </div>
+  </footer>

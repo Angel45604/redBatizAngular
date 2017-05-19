@@ -10,5 +10,6 @@ export class Menubar{
 
     logOut(){
         this.authenticationService.logout();
+        location.reload();
     }
 }
