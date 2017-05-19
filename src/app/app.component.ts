@@ -15,8 +15,6 @@ import {User} from './models/user';
 })
 export class AppComponent implements OnInit{
     currentUser:User;
-    userName:string;
-    userId:string;
     constructor() {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         console.log(this.currentUser);
@@ -45,7 +43,5 @@ export class AppComponent implements OnInit{
     //Aqui esta el json de el usuario con su informacion, falta su grupo y mas cosas
     ngOnInit(){
         console.log(this.currentUser);
-        this.userName= this.currentUser.name;
-        this.userId = this.currentUser.username;
     }
 }

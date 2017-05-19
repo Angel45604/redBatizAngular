@@ -7,13 +7,9 @@ import {Profile} from '../profile/profile.component';
     styleUrls: ['sidenav.component.css']
 })
 export class Sidenav{
-    @Input() userInfo: any;
+    @Input() user: any;
     @Output() assiEvent: EventEmitter<String> = new EventEmitter();
-    @Input() accessLevel: number;
-    log(): void {
-        console.log(this.accessLevel);
-        console.log(this.userInfo);
-    }
+    @Output() ContModeEvent: EventEmitter<any> = new EventEmitter();
     constructor(public dialog: MdDialog) {}
 
   openDialog() {
