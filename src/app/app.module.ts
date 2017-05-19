@@ -57,7 +57,7 @@ import { APPROUTER } from './commons/router';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     RouterModule.forRoot(APPROUTER),
     CovalentCoreModule,
     // (optional) Additional Covalent Modules imports

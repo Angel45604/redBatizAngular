@@ -1,16 +1,228 @@
-﻿.example-container {
+﻿menubar-component{
+    z-index:3;
+    position: fixed;
+}
+
+.toggler{
+    position: relative;
+    z-index: 4;
+    flex-basis: 30px;
+    width: 60px;
+    height: 60px;
+    top: .3em;
+    left: 1em;
+    display: none;
+}
+
+.toggler img{
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+}
+
+@media(max-width:600px){
+    .toggler{
+        display: flex;
+    }
+    .publication-content{
+        flex:1;
+        flex-basis: 100%;
+    }
+    .spacer{
+        display: none;
+    }
+}
+
+.example-sidenav-fab-container {
   width: 100%;
   height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+/*Sidenav Content*/
+.example-sidenav-fab-container md-sidenav{
+  max-width: 230px;
+
 }
 
-.example-sidenav {
-  padding: 20px;
+.example-sidenav-fab-container .md-sidenav-content,
+.example-sidenav-fab-container md-sidenav {
+  display: flex;
+  overflow: visible;
+}
+
+.example-scrolling-content {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-sidenav-fab-container{
+    position: fixed;
+    top: 3.9rem;
+}
+
+.example-fab {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+.profile-container{
+    display: flex;
+    width:230px;
+    height: 6rem;
+    background-image: url("../../assets/images/user-bg.jpg");
+}
+.profile-img{
+    flex:1;
+    margin: auto;
+    padding-left: 1em;
+}
+.profile-img img{
+    border-radius: 50%;
+}
+.profile-data{
+    flex:1;
+    margin: auto;
+}
+
+ul{
+    text-decoration: none;
+    list-style: none;
+    width:230px;
+}
+
+.sidenav-data{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.element1{
+    flex-basis: 100%;
+    
+}
+button{
+    width: 100%;
+}
+button:hover{
+    background-color: #e0e0e0;
+}
+
+hr{
+    width: 100%;
+    height:3px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #bdbdbd inset;
+}
+
+.main-content{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.spacer{
+    flex:1;
+}
+.publication-element{
+
+    flex:1;
+    flex-direction: column;
+}
+
+
+
+
+
+
+#left-sidebar-nav{
+	overflow: hidden;
+	z-index: 1;
+}
+
+.side-nav.leftside-navigation .collapsible-body li.active
+{
+	background-color:rgba(0,0,0,0.04);
+}
+
+.side-nav.fixed.leftside-navigation .collapsible-body li.active
+{
+	background-color:rgba(0,0,0,0.04);
+}
+
+.side-nav .collapsible-body li a
+{
+	margin:0 1rem 0 3rem;
+}
+
+ul.side-nav.leftside-navigation
+{
+	top:76px;
+}
+
+ul.side-nav.leftside-navigation hr
+{
+	display:block;
+	height:1px;
+	border:0;
+	border-top:1px solid #e0e0e0;
+	margin:1em 0;
+	padding:0;
+}
+
+ul.side-nav.leftside-navigation li
+{
+	line-height:44px;
+}
+
+ul.side-nav.leftside-navigation li:hover
+{
+	background-color:rgba(0,0,0,0.04);
+}
+
+ul.side-nav.leftside-navigation li.active
+{
+	background-color:rgba(0,0,0,0.04);
+}
+
+ul.side-nav.leftside-navigation li a
+{
+	font-size:14px;font-weight:400;
+}
+
+ul.side-nav.leftside-navigation li.user-details
+{
+	background:url("../../assets/images/user-bg.jpg") no-repeat center center;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:cover;
+	margin-bottom:15px;
+	padding:15px 0 0 15px;
+}
+
+ul.side-nav.leftside-navigation li.user-details #profile-dropdown a
+{
+	padding:8px 15px
+}
+ul.side-nav.leftside-navigation .profile-btn
+{
+	margin:0;
+	text-transform:capitalize;
+	padding:0;
+	text-shadow:1px 1px 1px #444;
+	font-size:15px
+}
+
+ul.side-nav.leftside-navigation ul.collapsible-accordion
+{
+	background-color:#fff;
+}
+
+.side-nav {
+    transform: translateX(0%) !important;
+}
+
+.contenedor{
+  width:100px;
 }

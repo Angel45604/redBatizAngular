@@ -19,23 +19,61 @@
 
       <hr>
       <div class="sidenav-data">
-        <div class="element1">
-          <div *ngIf="user.idRolfk>1">
-            <button (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM7'})" md-raised-button class="text-upper">4IM7</button><br>
-            <button (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM8'})" md-raised-button class="text-upper">4IM8</button><br>
-            <button (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM9'})" md-raised-button class="text-upper">4IM9</button><br>
-          </div>
-          <div *ngIf="user.idRolfk==1">
-            <button (click)="ContModeEvent.emit({publiMode:2,publiFilter:'Matematicas'})" md-raised-button class="text-upper">Matemáticas</button><br>
-            <button (click)="ContModeEvent.emit({publiMode:2,publiFilter:'Dibujo'})" md-raised-button class="text-upper">Dibujo</button><br>
-          </div>
+        <div class="contenedor">
+    <ul id="slide-out" class="side-nav fixed leftside-navigation">
+        <li class="bold">
+            <a routerLink="/assignature" class="waves-effect waves-cyan">
+                <i class="mdi-communication-email"></i> Herramientas 
+                <span class="new badge">1</span>
+            </a>
+        </li>
+        <li class="li-hover"><div class="divider"></div></li>
+        <div *ngIf="user.idRolfk>1">
+        <li class="bold">
+            <a (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM7'})"class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> 4IM7
+            </a>
+        </li>
+        <li class="bold">
+            <a (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM8'})" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> 4IM8
+            </a>
+        </li>
+        <li class="bold">
+            <a (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM9'})" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> 4IM9
+            </a>
+        </li>
+        
         </div>
-
-        <hr>
-        <div class="element1">
-
+        <div *ngIf="user.idRolfk==1">
+          <li class="bold">
+            <a (click)="ContModeEvent.emit({publiMode:2,publiFilter:'Matematicas'})" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> Matemáticas
+            </a>
+        </li>
+        <li class="bold">
+            <a (click)="ContModeEvent.emit({publiMode:2,publiFilter:'Dibujo'})" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> Dibujo
+            </a>
+        </li>
+        <li class="bold">
+          <!--NO SE SI YA HAYA FISICA,EN CASO DE QUE NO HAYA, AGREGALA-->
+            <a (click)="ContModeEvent.emit({publiMode:2,publiFilter:'Fisica'})" class="waves-effect waves-cyan">
+                <i class="mdi-editor-insert-invitation"></i> Física
+            </a>
+        </li>
         </div>
+        <li class="li-hover"><div class="divider"></div></li>
+        <li>
+          <ul *ngFor="let group of grs">
+            <li>{{group.name}}</li>
+            <li>Hola</li>
+          </ul>
+        </li>
+    </ul>
       </div>
+        </div>
     </div>
   </md-sidenav>
 </md-sidenav-container>
