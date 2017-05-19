@@ -1,13 +1,41 @@
-﻿<md-sidenav-container class="example-container">
-  <md-sidenav #sidenav mode="push" opened="true" class="example-sidenav">
-    Jolly good!
-    
-  </md-sidenav>
-
-<!--fuera del sidenav-->
-  <div class="example-sidenav-content">
-    <button md-button (click)="sidenav.open()">
+﻿<button class="toggler" md-mini-fab color="primary" (click)="sidenav.toggle()">
+  <img src="../assets/images/logo.png" alt="Logo">
+</button>
+<md-sidenav-container class="example-sidenav-fab-container">
+  <md-sidenav #sidenav mode="side" opened="true">
+    <button md-mini-fab class="example-fab" (click)="sidenav.toggle()">
+      <md-icon>add</md-icon>
     </button>
-  </div>
+    <div class="example-scrolling-content" layout="row">
+      <div class="profile-container">
+        <div class="profile-img">
+          <img src="../assets/images/avatar.jpg" alt="Avatar" width="50%">
+        </div>
+        <div class="profile-data tc-grey-50 md-body-1">
+          <b>{{user.name}}</b><br>
+          <b>{{user.username}}</b>
+        </div>
+      </div>
 
+      <hr>
+      <div class="sidenav-data">
+        <div class="element1">
+          <div *ngIf="user.idRolfk>1">
+            <button (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM7'})" md-raised-button class="text-upper">4IM7</button><br>
+            <button (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM8'})" md-raised-button class="text-upper">4IM8</button><br>
+            <button (click)="ContModeEvent.emit({publiMode:1,publiFilter:'4IM9'})" md-raised-button class="text-upper">4IM9</button><br>
+          </div>
+          <div *ngIf="user.idRolfk==1">
+            <button (click)="ContModeEvent.emit({publiMode:2,publiFilter:'Matematicas'})" md-raised-button class="text-upper">Matemáticas</button><br>
+            <button (click)="ContModeEvent.emit({publiMode:2,publiFilter:'Dibujo'})" md-raised-button class="text-upper">Dibujo</button><br>
+          </div>
+        </div>
+
+        <hr>
+        <div class="element1">
+
+        </div>
+      </div>
+    </div>
+  </md-sidenav>
 </md-sidenav-container>

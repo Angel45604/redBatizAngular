@@ -9,11 +9,8 @@
     "\\src\\app\\services",
     "\\src\\app\\tool",
     "\\src\\backend",
-    "\\src\\backend\\bin",
-    "\\src\\backend\\router",
-    "\\src\\backend\\router\\routes",
-    "\\src\\backend\\services"
+    "\\src\\backend\\bin"
   ],
-  "SelectedNode": "\\src\\app\\publication-container\\publication-container.component.ts",
+  "SelectedNode": "\\src\\app\\app.component.css",
   "PreviewInSolutionExplorer": false
 }
