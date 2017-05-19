@@ -8,6 +8,6 @@ import {AuthGuard} from '../guards/auth.guard';
 export const APPROUTER:Routes=[
     {path:'', component:AppComponent, canActivate:[AuthGuard]},
     {path:'login', component:LoginComponent},    
-    {path:'assignature',component:Assignature},
+    {path:'assignature',component:Assignature, canActivate:[AuthGuard]},
     {path:'**',component:Page404}
 ]

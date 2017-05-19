@@ -1,7 +1,14 @@
 ﻿<menubar-component></menubar-component>
 <sidenav-component [user]="currentUser" (ContModeEvent)="setPublicationContainerMode($event.publiMode,$event.publiFilter)"></sidenav-component>
+
+  <div class="main-content">
+<div class="spacer"></div>
 <div class="publication-element">
   <!--DEJA BONITO ESTO-->
   <publicator-component *ngIf="currentUser.idRolfk==2"></publicator-component>
   <publication-container-component [usrGroup]="currentUser.group" [usrName]="currentUser.name" [accessLevel]="currentUser.idRolfk" [containerMode]="publicationContainerMode" [containerFilter]="publicationContainerFilter"></publication-container-component>
+  </div>
+  <div class="spacer"></div>
+    
+
 </div>

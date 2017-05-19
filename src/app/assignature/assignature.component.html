@@ -1,5 +1,5 @@
-<menubar-component></menubar-component>
-<br>
+﻿<menubar-component></menubar-component>
+<sidenav-component [user]="currentUser" (ContModeEvent)="setPublicationContainerMode($event.publiMode,$event.publiFilter)"></sidenav-component><!--En ese evento es donde se manda de vuelta a la pagina principal, es el mismo evento que cambia el filtro de publicaciones, para ver como funciona ve al app.component-->
 <br>
 <br>
 <br>

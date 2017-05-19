@@ -30,11 +30,12 @@ module.exports = (app, db) => {
     const publicationGroup = req.body.publicationGroup;
     const publicationAssignature = req.body.publicationAssignature;
     const publicationText = req.body.publicationText;
+    const publicationFile = req.body.publicationFile;
     db.tasks.create({
       publicator:publicator,
       publicationGroup: publicationGroup,
       publicationAssignature:publicationAssignature,
-      publicationText:publicationText
+      publicationText:publicationText,
     })
       .then(newTask=> {
         res.json(newTask);

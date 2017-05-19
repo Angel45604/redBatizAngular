@@ -125,6 +125,8 @@ hr{
 }
 .publication-element{
 
+    position:relative;
     flex:1;
     flex-direction: column;
+    top:75px;
 }

@@ -50,21 +50,28 @@ assignatures=[
 
   submitPublication(){
     console.log(this.selectedAssignature,this.selectedGroup);
-      let commentOperation: Observable<Comment[]>;
-      const formData: any = new FormData();
+    
+    let commentOperation: Observable<Comment[]>;
+    const formData: any = new FormData();
     const files: Array<File> = this.filesToUpload;
-
     formData.append("uploads[]", files[0], files[0]['name']);
     
     this.http.post('http://localhost:3000/upload', formData)
       .map(files => files.json(), this.fileName=files[0].name)
-      .subscribe(files => console.log(this.fileName))
-    this.publication = new PublicationCard(this.currentUser.name,""+this.selectedGroup,""+this.selectedAssignature, this.publicationText, this.destinationFolder+this.fileName);
-    if(!this.editing){
-      commentOperation = this.commentService.addComment(this.publication);
-    }else{
+      .subscribe(files => console.log(this.fileName));
+      console.log(this.fileName);
 
-    }
+      if(!this.editing){
+        if(this.fileName!=undefined){
+          this.publication = new PublicationCard(this.currentUser.name,""+this.selectedGroup,""+this.selectedAssignature, this.publicationText, this.destinationFolder+this.fileName);
+          commentOperation = this.commentService.addComment(this.publication);
+        }else{
+          this.publication = new PublicationCard(this.currentUser.name,""+this.selectedGroup,""+this.selectedAssignature, this.publicationText, this.destinationFolder+this.fileName);
+          commentOperation = this.commentService.addComment2(this.publication);
+        }
+      }else{
+
+      }
 
     commentOperation.subscribe(
       comments => {

@@ -1,27 +1,11 @@
-<<<<<<< HEAD:src/assets/images/app/publication-card/publication-card.component.html
 ﻿<md-card (click)="ola()">
   <md-card-header>
       <img md-card-avatar src="../assets/images/avatar.jpg">
       <md-card-title>{{publicator}}</md-card-title>
       <md-card-subtitle><div class="element"><b>Fecha de entrega: </b>9/5/17</div><div class="element" *ngIf="accessLevel>1">{{publicationGroup}}</div></md-card-subtitle>
   </md-card-header>
-  <img class="image" md-card-lg-image src="../assets/images/isom.png">
+  <img *ngIf="publicationFile!=''" width="450px" height="500px" class="image" md-card-lg-image [src]="publicationFile">
   <md-card-content>
     <h3 class="md-subhead">{{publicationText}}</h3>
-    <p class="md-body-1">Here is some more content</p>
   </md-card-content>
 </md-card>
-=======
-﻿<md-card (click)="ola()">
-  <md-card-header>
-      <img md-card-avatar src="../assets/images/avatar.jpg">
-      <md-card-title>{{publicator}}</md-card-title>
-      <md-card-subtitle><div class="element"><b>Fecha de entrega: </b>9/5/17</div><div class="element" *ngIf="accessLevel>1">{{publicationGroup}}</div></md-card-subtitle>
-  </md-card-header>
-  <img width="450px" height="500px" class="image" md-card-lg-image [src]="publicationFile">
-  <md-card-content>
-    <h3 class="md-subhead">{{publicationText}}</h3>
-    <p class="md-body-1">Here is some more content</p>
-  </md-card-content>
-</md-card>
->>>>>>> b0160df31d8352d50c6e8f9336edb9d7487e1117:src/app/publication-card/publication-card.component.html
