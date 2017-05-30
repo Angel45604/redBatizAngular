@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 export class CommentService {
      constructor (private http: Http) {}
      private commentsmdUrl = 'http://localhost:3000/TasksMd';  
-     private commentsUrl='http://localhost:3000/TasksMd';   
+     private commentsUrl='http://localhost:3000/Tasks';   
 
      getComments() : Observable<Comment[]>{
          return this.http.get(this.commentsUrl)

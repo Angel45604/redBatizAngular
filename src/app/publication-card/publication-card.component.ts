@@ -13,7 +13,7 @@ export class PublicationCard{
 
     constructor(
         private commentService: CommentService
-        ){}
+        ){console.log(this.publicationDate);}
     // Define input properties
     @Input() comment: Comment;
     @Input() publicator:string;
@@ -21,5 +21,6 @@ export class PublicationCard{
     @Input() publicationAssignature: string;
     @Input() publicationText:string;
     @Input() publicationFile:string;
+    @Input() publicationDate:string;
     @Input() accessLevel:number;
 }

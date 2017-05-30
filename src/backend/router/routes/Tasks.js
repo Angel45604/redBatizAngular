@@ -5,7 +5,7 @@ module.exports = (app, db) => {
   // GET all tasks
   app.get('/Tasks', (req, res) => {
     db.tasks.findAll({
-        attributes: ['publicator', 'publicationGroup', 'publicationAssignature','publicationText', 'publicationFile']
+        attributes: ['publicator', 'publicationGroup', 'publicationAssignature','publicationText', 'publicationFile', 'created_at']
     })
       .then(tasks => {
         res.json(tasks);

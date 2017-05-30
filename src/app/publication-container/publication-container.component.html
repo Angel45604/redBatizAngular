@@ -1,13 +1,12 @@
-﻿<div *ngFor="let comment of comments">
-  <!-- Esto mañana lo termino -->
-  <publication-card-component *ngIf="containerMode==0 && (accessLevel==3 || ((usrGroup==comment.publicationGroup&&accessLevel==1)||(accessLevel==2 && usrName==comment.publicator))) ;else group" accessLevel={{accessLevel}} publicator={{comment.publicator}} publicationGroup={{comment.publicationGroup}} publicationText={{comment.publicationText}} publicationFile={{comment.publicationFile}}></publication-card-component>
+﻿<div *ngFor="let comment of comments.slice().reverse()">
+  <publication-card-component *ngIf="containerMode==0 && (accessLevel==3 || ((usrGroup==comment.publicationGroup&&accessLevel==1)||(accessLevel==2 && usrName==comment.publicator))) ;else group" accessLevel={{accessLevel}} publicator={{comment.publicator}} publicationGroup={{comment.publicationGroup}} publicationText={{comment.publicationText}} publicationFile={{comment.publicationFile}} publicationDate={{comment.created_at}}></publication-card-component>
   <ng-template #group>
     <div *ngIf="containerMode==1;else assignature">
-      <publication-card-component *ngIf="(containerFilter==comment.publicationGroup) && (accessLevel==2 && usrName==comment.publicator)" accessLevel={{accessLevel}} publicator={{comment.publicator}} publicationGroup={{comment.publicationGroup}} publicationText={{comment.publicationText}} publicationFile={{comment.publicationFile}}></publication-card-component>  
+      <publication-card-component *ngIf="(containerFilter==comment.publicationGroup) && (accessLevel==2 && usrName==comment.publicator)" accessLevel={{accessLevel}} publicator={{comment.publicator}} publicationGroup={{comment.publicationGroup}} publicationText={{comment.publicationText}} publicationFile={{comment.publicationFile}} publicationDate={{comment.created_at}}></publication-card-component>  
     </div>
     <ng-template #assignature>
       <div *ngIf="containerMode==2"> 
-        <publication-card-component *ngIf="containerFilter==comment.publicationAssignature" accessLevel={{accessLevel}} publicator={{comment.publicator}} publicationGroup={{comment.publicationGroup}} publicationText={{comment.publicationText}} publicationFile={{comment.publicationFile}}></publication-card-component>  
+        <publication-card-component *ngIf="containerFilter==comment.publicationAssignature" accessLevel={{accessLevel}} publicator={{comment.publicator}} publicationGroup={{comment.publicationGroup}} publicationText={{comment.publicationText}} publicationFile={{comment.publicationFile}} publicationDate={{comment.created_at}}></publication-card-component>  
       </div>
     </ng-template>
   </ng-template>

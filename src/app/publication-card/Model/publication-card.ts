@@ -4,6 +4,6 @@
         public publicationGroup: string,
         public publicationAssignature:string,
         public publicationText:string,
-        public publicationFile:string
+        public publicationFile:string,
         ){}
 }
