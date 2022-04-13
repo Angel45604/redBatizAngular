@@ -1,5 +1,5 @@
 # Red Batiz
-A social network attempt built with Angular, MySQL and Node.js.
+A course management system built with Angular, MySQL and Node.js.
 <p align="center">
     <image width="80%" src="https://user-images.githubusercontent.com/20376969/163079952-d5ed6ef7-b476-4e8b-9029-384283042edf.png" />
 </p>
