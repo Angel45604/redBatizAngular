@@ -1,27 +1,14 @@
-# MyProyect
+# Red Batiz
+A social network attempt built with Angular, MySQL and Node.js.
+<p align="center">
+    <image width="80%" src="https://user-images.githubusercontent.com/20376969/163079952-d5ed6ef7-b476-4e8b-9029-384283042edf.png" />
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
-
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Features
+- A modular design, broken down in web, api and db modules
+- CRUD made with Sequelize and Express
+- File upload and storage
+- Sessions managed with express-sequelize-session
+<p align="center">
+    <image width="80%" src="https://user-images.githubusercontent.com/20376969/163080158-7ab6043e-5ea7-42ae-8981-22b3f5729fe1.png" />
+</p>
